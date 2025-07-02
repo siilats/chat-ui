@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1
-ARG INCLUDE_DB=false
+ARG INCLUDE_DB=true
 
 FROM node:20-slim AS base
 ENV PLAYWRIGHT_SKIP_BROWSER_GC=1
@@ -29,7 +29,8 @@ RUN mkdir -p /data/models
 RUN chown -R 1000:1000 /data/models
 
 RUN apt-get update
-RUN apt-get install gnupg curl git cmake clang libgomp1 -y
+# Removed cmake, clang, libgomp1 as they're not needed for HF models
+RUN apt-get install gnupg curl git -y
 
 RUN npx playwright install --with-deps chromium
 
@@ -54,7 +55,8 @@ COPY --link --chown=1000 package-lock.json package.json ./
 
 ARG APP_BASE=
 ARG PUBLIC_APP_COLOR=blue
-ARG SKIP_LLAMA_CPP_BUILD
+# Skip llama.cpp build by default to use HF public models
+ARG SKIP_LLAMA_CPP_BUILD=true
 ENV BODY_SIZE_LIMIT=15728640
 ENV SKIP_LLAMA_CPP_BUILD=$SKIP_LLAMA_CPP_BUILD
 
@@ -88,7 +90,7 @@ USER user
 FROM local_db_${INCLUDE_DB} AS final
 
 # build arg to determine if the database should be included
-ARG INCLUDE_DB=false
+ARG INCLUDE_DB=true
 ENV INCLUDE_DB=${INCLUDE_DB}
 
 # svelte requires APP_BASE at build time so it must be passed as a build arg
