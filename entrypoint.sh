@@ -15,5 +15,6 @@ if [ "$INCLUDE_DB" = "true" ] ; then
 fi;
 
 export PUBLIC_VERSION=$(node -p "require('./package.json').version")
+export PORT=7860
 
-dotenv -e /app/.env -c -- node /app/build/index.js -- --host 0.0.0.0 --port 3000
+dotenv -e /app/.env -c -- node /app/build/index.js -- --host 0.0.0.0 --port 7860
