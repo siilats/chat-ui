@@ -18,7 +18,8 @@ export function getWebSearchProvider() {
 
 /** Searches the web using the first available provider, based on the env */
 export async function searchWeb(query: string): Promise<WebSearchSource[]> {
-	if (config.USE_LOCAL_WEBSEARCH) return searchWebLocal(query);
+	if (config.USE_LOCAL_WEBSEARCH && config.USE_LOCAL_WEBSEARCH === "true")
+		return searchWebLocal(query);
 	if (config.SEARXNG_QUERY_URL) return searchSearxng(query);
 	if (config.SERPER_API_KEY) return searchSerper(query);
 	if (config.YDC_API_KEY) return searchYouApi(query);
