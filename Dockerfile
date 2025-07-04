@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1
-ARG INCLUDE_DB=true
+ARG INCLUDE_DB=false
 
 FROM node:20-slim AS base
 ENV PLAYWRIGHT_SKIP_BROWSER_GC=1
@@ -90,7 +90,7 @@ USER user
 FROM local_db_${INCLUDE_DB} AS final
 
 # build arg to determine if the database should be included
-ARG INCLUDE_DB=true
+ARG INCLUDE_DB=false
 ENV INCLUDE_DB=${INCLUDE_DB}
 
 # svelte requires APP_BASE at build time so it must be passed as a build arg
