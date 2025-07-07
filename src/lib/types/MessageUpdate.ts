@@ -120,9 +120,13 @@ export interface MessageStreamUpdate {
 export enum MessageReasoningUpdateType {
 	Stream = "stream",
 	Status = "status",
+	Back = "back",
 }
 
-export type MessageReasoningUpdate = MessageReasoningStreamUpdate | MessageReasoningStatusUpdate;
+export type MessageReasoningUpdate =
+	| MessageReasoningStreamUpdate
+	| MessageReasoningStatusUpdate
+	| MessageReasoningBackUpdate;
 
 export interface MessageReasoningStreamUpdate {
 	type: MessageUpdateType.Reasoning;
@@ -133,6 +137,13 @@ export interface MessageReasoningStatusUpdate {
 	type: MessageUpdateType.Reasoning;
 	subtype: MessageReasoningUpdateType.Status;
 	status: string;
+}
+
+export interface MessageReasoningBackUpdate {
+	type: MessageUpdateType.Reasoning;
+	subtype: MessageReasoningUpdateType.Back;
+	reasoning?: number;
+	content?: number;
 }
 
 export interface MessageFileUpdate {

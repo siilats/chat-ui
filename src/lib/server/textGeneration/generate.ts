@@ -22,10 +22,12 @@ export async function* generate(
 ): AsyncIterable<MessageUpdate> {
 	// reasoning mode is false by default
 	let reasoning = false;
-	let reasoningBuffer = "";
+	const reasoningBuffer = "";
+	let buffer = "";
 	let lastReasoningUpdate = new Date();
 	let status = "";
 	const startTime = new Date();
+	let lastProcessedBeginTokenIndex = -1; // Track the last processed begin token position
 	if (
 		model.reasoning &&
 		// if the beginToken is an empty string, the model starts in reasoning mode
@@ -111,9 +113,9 @@ Do not use prefixes such as Response: or Answer: when answering to the user.`,
 
 				// if the beginToken is an empty string, we don't need to remove anything
 				const beginIndex = model.reasoning.beginToken
-					? reasoningBuffer.indexOf(model.reasoning.beginToken)
+					? buffer.indexOf(model.reasoning.beginToken)
 					: 0;
-				const endIndex = reasoningBuffer.lastIndexOf(model.reasoning.endToken);
+				const endIndex = buffer.lastIndexOf(model.reasoning.endToken);
 
 				if (beginIndex !== -1 && endIndex !== -1) {
 					// Remove the reasoning section (including tokens) from final answer
@@ -131,18 +133,56 @@ Do not use prefixes such as Response: or Answer: when answering to the user.`,
 			continue;
 		}
 
+		buffer += output.token.text;
+
 		if (model.reasoning && model.reasoning.type === "tokens") {
-			if (output.token.text === model.reasoning.beginToken) {
+			const currentBeginTokenIndex = buffer.indexOf(model.reasoning.beginToken);
+
+			if (
+				!reasoning &&
+				currentBeginTokenIndex !== -1 &&
+				currentBeginTokenIndex > lastProcessedBeginTokenIndex &&
+				buffer.indexOf(model.reasoning.endToken) === -1
+			) {
 				reasoning = true;
-				reasoningBuffer += output.token.text;
+				lastProcessedBeginTokenIndex = currentBeginTokenIndex;
+				const beginTokenIndex = buffer.indexOf(model.reasoning.beginToken);
+				const textBuffer = buffer.slice(beginTokenIndex + model.reasoning.beginToken.length);
+				yield {
+					type: MessageUpdateType.Reasoning,
+					subtype: MessageReasoningUpdateType.Status,
+					status: "Started reasoning...",
+				};
+				yield {
+					type: MessageUpdateType.Reasoning,
+					subtype: MessageReasoningUpdateType.Back,
+					content: buffer.length - buffer.lastIndexOf(model.reasoning.beginToken),
+				};
+				yield {
+					type: MessageUpdateType.Reasoning,
+					subtype: MessageReasoningUpdateType.Stream,
+					token: textBuffer,
+				};
+
 				continue;
-			} else if (output.token.text === model.reasoning.endToken) {
+			}
+			if (reasoning && buffer.indexOf(model.reasoning.endToken) !== -1) {
 				reasoning = false;
-				reasoningBuffer += output.token.text;
+				const endTokenIndex = buffer.lastIndexOf(model.reasoning.endToken);
+				const textBuffer = buffer.slice(endTokenIndex + model.reasoning.endToken.length);
 				yield {
 					type: MessageUpdateType.Reasoning,
 					subtype: MessageReasoningUpdateType.Status,
 					status: `Done in ${Math.round((new Date().getTime() - startTime.getTime()) / 1000)}s.`,
+				};
+				yield {
+					type: MessageUpdateType.Reasoning,
+					subtype: MessageReasoningUpdateType.Back,
+					reasoning: buffer.length - buffer.lastIndexOf(model.reasoning.endToken),
+				};
+				yield {
+					type: MessageUpdateType.Stream,
+					token: textBuffer,
 				};
 				continue;
 			}
@@ -152,42 +192,6 @@ Do not use prefixes such as Response: or Answer: when answering to the user.`,
 
 		// pass down normal token
 		if (reasoning) {
-			reasoningBuffer += output.token.text;
-
-			if (model.reasoning && model.reasoning.type === "tokens") {
-				// split reasoning buffer so that anything that comes after the end token is separated
-				// add it to the normal buffer, and yield two updates, one for the reasoning and one for the normal content
-				// also set reasoning to false
-
-				if (reasoningBuffer.lastIndexOf(model.reasoning.endToken) !== -1) {
-					const endTokenIndex = reasoningBuffer.lastIndexOf(model.reasoning.endToken);
-					const textBuffer = reasoningBuffer.slice(endTokenIndex + model.reasoning.endToken.length);
-					reasoningBuffer = reasoningBuffer.slice(
-						0,
-						endTokenIndex + model.reasoning.endToken.length + 1
-					);
-
-					yield {
-						type: MessageUpdateType.Reasoning,
-						subtype: MessageReasoningUpdateType.Stream,
-						token: output.token.text,
-					};
-
-					yield {
-						type: MessageUpdateType.Stream,
-						token: textBuffer,
-					};
-
-					yield {
-						type: MessageUpdateType.Reasoning,
-						subtype: MessageReasoningUpdateType.Status,
-						status: `Done in ${Math.round((new Date().getTime() - startTime.getTime()) / 1000)}s.`,
-					};
-
-					reasoning = false;
-					continue;
-				}
-			}
 			// yield status update if it has changed
 			if (status !== "") {
 				yield {

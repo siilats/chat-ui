@@ -351,6 +351,17 @@
 							reasoningLastUpdate = currentTime;
 						}
 					}
+					if (update.subtype === MessageReasoningUpdateType.Back) {
+						if (update.content) {
+							messageToWriteTo.content = messageToWriteTo.content?.slice(0, -update.content);
+						}
+						if (update.reasoning) {
+							messageToWriteTo.reasoning = messageToWriteTo.reasoning?.slice(
+								0,
+								-update.reasoning
+							);
+						}
+					}
 				}
 			}
 		} catch (err) {
