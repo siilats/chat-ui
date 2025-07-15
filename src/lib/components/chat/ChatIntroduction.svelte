@@ -23,16 +23,16 @@
 <div class="my-auto grid gap-8 lg:grid-cols-3">
 	<div class="lg:col-span-1">
 		<div>
-			<div class="mb-3 flex items-center text-2xl font-semibold">
+			<div class="mb-3 flex flex-col items-center text-2xl font-semibold">
 				<Logo classNames="mr-1 flex-none" />
-				{publicConfig.PUBLIC_APP_NAME}
-				<div
+				<span class="text-[25.3px] font-[700] font-nunito">{publicConfig.PUBLIC_APP_NAME}</span>
+				<!-- <div
 					class="ml-3 flex h-6 items-center rounded-lg border border-gray-100 bg-gray-50 px-2 text-base text-gray-400 dark:border-gray-700/60 dark:bg-gray-800"
 				>
 					v{publicConfig.PUBLIC_VERSION}
-				</div>
+				</div> -->
 			</div>
-			<p class="text-base text-gray-600 dark:text-gray-400">
+			<p class="font-[600] text-[18px] text-gray-600 dark:text-gray-400 font-sans">
 				{publicConfig.PUBLIC_APP_DESCRIPTION ||
 					"Making the community's best AI chat models available to everyone."}
 			</p>

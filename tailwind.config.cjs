@@ -15,6 +15,10 @@ export default {
 				xxs: "0.625rem",
 				smd: "0.94rem",
 			},
+			fontFamily: {
+				nunito: ["Nunito", "sans-serif"],
+				sans: ["Source Sans Pro", "sans-serif"],
+			},
 		},
 	},
 	plugins: [
