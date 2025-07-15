@@ -47,7 +47,7 @@
 	);
 
 	$effect(() => {
-		title ??= "New Chat";
+		title ??= "Uus vestlus";
 	});
 
 	beforeNavigate(() => {

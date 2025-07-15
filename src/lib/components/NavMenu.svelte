@@ -1,9 +1,9 @@
 <script lang="ts" module>
 	export const titles: { [key: string]: string } = {
-		today: "Today",
-		week: "This week",
-		month: "This month",
-		older: "Older",
+		today: "Täna",
+		week: "See nädal",
+		month: "See kuu",
+		older: "Vanemad",
 	} as const;
 </script>
 
@@ -105,7 +105,7 @@
 		class="flex items-center rounded-xl text-lg font-semibold"
 		href="{publicConfig.PUBLIC_ORIGIN}{base}/"
 	>
-		<Logo classNames="mr-1" />
+		<Logo classNames="mr-1 size-6 mr-2" />
 		{publicConfig.PUBLIC_APP_NAME}
 	</a>
 	{#if $page.url.pathname !== base + "/"}

@@ -142,7 +142,7 @@
 						}}
 					>
 						<CarbonChat class="mr-1.5 text-sm" />
-						New chat
+						Uus Vestlus
 					</button>
 				</div>
 				{#if assistant?.createdByMe}

@@ -21,16 +21,14 @@
 </script>
 
 <div class="my-auto flex flex-col">
-		<div>
-			<div class="mb-3 flex items-center text-2xl font-semibold">
-				<Logo classNames="mr-1 flex-none size-[46.66px]" />
-				<span class="text-2xl font-[700] text-[#306FC7] text-[25.3px] font-nunito">{publicConfig.PUBLIC_APP_NAME}</span>
-				<!-- <div
-					class="ml-3 flex h-6 items-center rounded-lg border border-gray-100 bg-gray-50 px-2 text-base text-gray-400 dark:border-gray-700/60 dark:bg-gray-800"
-				>
-					v{publicConfig.PUBLIC_VERSION}
-				</div> -->
-			</div>
+		<div class="mb-3 flex flex-col gap-1 items-center text-2xl font-semibold">
+			<Logo classNames="mr-1 flex-none size-[46.66px]" />
+			<span class="text-2xl font-[700] text-[#306FC7] text-[25.3px] font-nunito">{publicConfig.PUBLIC_APP_NAME}</span>
+			<!-- <div
+				class="ml-3 flex h-6 items-center rounded-lg border border-gray-100 bg-gray-50 px-2 text-base text-gray-400 dark:border-gray-700/60 dark:bg-gray-800"
+			>
+				v{publicConfig.PUBLIC_VERSION}
+			</div> -->
 			<p class="text-[18px] font-sans text-center text-[#757575] dark:text-[#575757]">
 				{publicConfig.PUBLIC_APP_DESCRIPTION ||
 					"Making the community's best AI chat models available to everyone."}
@@ -92,7 +90,7 @@
 			</div>
 		</div>
 	{/if}
-	<div class="flex flex-col items-center w-full">
+	<div class="flex flex-col items-center w-full py-2">
 		<div class="mb-3 flex items-center text-2xl font-semibold">
 			<span class="text-[24px] font-[700] text-[#306FC7] font-nunito">Tasuta rakendused</span>
 		</div>
@@ -100,29 +98,31 @@
 			Neil kolmel rakendusel on tasuta limiidid, mis lähtestatakse iga kuu ja töötavad suurepäraselt eesti keeles.
 		</p>
 	</div>
-	<div class="w-full max-w-[400px] flex items-center justify-between">
-		<div class="flex flex-col items-center">
-			<div class="size-[77px] rounded-full bg-[#508DEF1A] flex items-center justify-center">
-				<img src="{publicConfig.assetPath}/icons/chatgpt.svg" alt="ChatGPT" class="w-full h-full object-cover">
+	<div class="w-full flex items-center justify-center py-2">
+		<div class="w-full max-w-[400px] flex items-center justify-around">
+			<div class="flex flex-col items-center gap-1">
+				<div class="size-[77px] rounded-full bg-[#508DEF1A] flex items-center justify-center">
+					<img src="{publicConfig.assetPath}/icons/chatgpt.svg" alt="ChatGPT" class="w-full h-full object-cover">
+				</div>
+				<div class="text-[18px] font-sans text-center font-[600] text-[#757575] dark:text-[#575757]">
+					ChatGPT
+				</div>
 			</div>
-			<div class="text-[18px] font-sans text-center font-[600] text-[#757575] dark:text-[#575757]">
-				ChatGPT
+			<div class="flex flex-col items-center gap-1">
+				<div class="size-[77px] rounded-full bg-[#508DEF1A] flex items-center justify-center">
+					<img src="{publicConfig.assetPath}icons/deepseek.svg" alt="DeepSeek" class="w-full h-full object-cover">
+				</div>
+				<div class="text-[18px] font-sans text-center font-[600] text-[#757575] dark:text-[#575757]">
+					deepseek
+				</div>
 			</div>
-		</div>
-		<div class="flex flex-col items-center">
-			<div class="size-[77px] rounded-full bg-[#508DEF1A] flex items-center justify-center">
-				<img src="{publicConfig.assetPath}/icons/deepseek.svg" alt="DeepSeek" class="w-full h-full object-cover">
-			</div>
-			<div class="text-[18px] font-sans text-center font-[600] text-[#757575] dark:text-[#575757]">
-				deepseek
-			</div>
-		</div>
-		<div class="flex flex-col items-center">
-			<div class="size-[77px] rounded-full bg-[#508DEF1A] flex items-center justify-center">
-				<img src="{publicConfig.assetPath}/icons/gemini.svg" alt="Gemini" class="w-full h-full object-cover">
-			</div>
-			<div class="text-[18px] font-sans text-center font-[600] text-[#757575] dark:text-[#575757]">
-				Gemini
+			<div class="flex flex-col items-center gap-1">
+				<div class="size-[77px] rounded-full bg-[#508DEF1A] flex items-center justify-center">
+					<img src="{publicConfig.assetPath}icons/gemini.svg" alt="Gemini" class="w-full h-full object-cover">
+				</div>
+				<div class="text-[18px] font-sans text-center font-[600] text-[#757575] dark:text-[#575757]">
+					Gemini
+				</div>
 			</div>
 		</div>
 	</div>
