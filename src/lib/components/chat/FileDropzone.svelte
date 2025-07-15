@@ -97,5 +97,5 @@
 		: 'bg-gray-100 text-gray-500 dark:border-gray-500 dark:bg-gray-700 dark:text-gray-400'}"
 >
 	<CarbonImage class="text-xl" />
-	<p>Drop File to add to chat</p>
+	<p>Lisa fail vestlusse lohistades</p>
 </div>

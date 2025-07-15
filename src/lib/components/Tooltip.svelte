@@ -7,7 +7,7 @@
 
 	let {
 		classNames = "",
-		label = "Copied",
+		label = "Kopeeritud",
 		position = "left-1/2 top-full transform -translate-x-1/2 translate-y-2",
 	}: Props = $props();
 </script>

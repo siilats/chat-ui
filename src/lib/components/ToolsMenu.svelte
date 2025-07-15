@@ -64,7 +64,7 @@
 	cursor-pointer select-none items-center gap-1 rounded-lg border bg-white px-2 py-1.5 shadow-sm hover:shadow-none dark:border-gray-800 dark:bg-gray-900"
 	>
 		<IconTool classNames="dark:text-purple-600" />
-		Tools
+		Tööriistad
 		<span class="text-gray-400 dark:text-gray-500"> ({activeToolCount}) </span>
 	</summary>
 	<div
@@ -72,7 +72,7 @@
 	>
 		<div class="grid grid-cols-2 gap-x-6 gap-y-1 p-3">
 			<div class="col-span-2 flex items-center gap-1.5 text-sm text-gray-500">
-				Available tools
+				Saadaolevad tööriistad
 				{#if publicConfig.isHuggingChat}
 					<a
 						href="https://huggingface.co/spaces/huggingchat/chat-ui/discussions/470"
@@ -89,9 +89,9 @@
 					}}
 				>
 					{#if allToolsEnabled}
-						Disable all
+					Keela kõik
 					{:else}
-						Enable all
+					Luba kõik
 					{/if}
 				</button>
 			</div>
@@ -101,9 +101,9 @@
 					class="col-span-2 my-1 h-fit w-fit items-center justify-center rounded-full bg-purple-500/20 px-2.5 py-1.5 text-sm hover:bg-purple-500/30"
 				>
 					<span class="mr-1 rounded-full bg-purple-700 px-1.5 py-1 text-xs font-bold uppercase">
-						new
+						uus
 					</span>
-					Browse community tools ({page.data.communityToolCount ?? 0})
+					Sirvi kogukonna tööriistu ({page.data.communityToolCount ?? 0})
 				</a>
 			{/if}
 			{#each tools as tool}

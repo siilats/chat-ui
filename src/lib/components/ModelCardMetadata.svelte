@@ -28,8 +28,8 @@
 		rel="noreferrer"
 		class="flex items-center hover:underline"
 		><CarbonArrowUpRight class="mr-1.5 shrink-0 text-xs text-gray-400" />
-		Model
-		<div class="max-sm:hidden">&nbsp;page</div></a
+		Mudel
+		<div class="max-sm:hidden">&nbsp;leht</div></a
 	>
 	{#if model.datasetName || model.datasetUrl}
 		<a
@@ -38,8 +38,8 @@
 			rel="noreferrer"
 			class="flex items-center hover:underline"
 			><CarbonArrowUpRight class="mr-1.5 shrink-0 text-xs text-gray-400" />
-			Dataset
-			<div class="max-sm:hidden">&nbsp;page</div></a
+			Andmekogum
+			<div class="max-sm:hidden">&nbsp;leht</div></a
 		>
 	{/if}
 	{#if model.hasInferenceAPI}
@@ -61,10 +61,10 @@
 		>
 			{#if model.name.startsWith("meta-llama/Meta-Llama")}
 				<BIMeta class="mr-1.5 shrink-0 text-xs text-gray-400" />
-				Built with Llama
+				Ehitatud koos Llama
 			{:else}
 				<CarbonEarth class="mr-1.5 shrink-0 text-xs text-gray-400" />
-				Website
+				Veebileht
 			{/if}
 		</a>
 	{/if}

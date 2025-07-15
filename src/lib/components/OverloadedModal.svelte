@@ -15,13 +15,13 @@
 		<div class="flex flex-wrap items-center gap-2">
 			<IconDazzled classNames="text-3xl mx-auto" />
 			<h2 class="flex flex-wrap items-center text-lg font-semibold text-gray-800">
-				This model is currently overloaded.
+				Mudel on praegu ülekoormatud.
 			</h2>
 		</div>
 
 		<p class="text-sm text-gray-500">
-			Please try again later or consider using a different model. We currently have {page.data
-				.models.length} models available.
+			Proovi hiljem uuesti või kaaluge kasutamist teistest mudelidest. Meil on praegu {page.data
+				.models.length} mudelit.
 		</p>
 
 		<div class="flex w-full flex-col items-center gap-4 pt-4">
@@ -29,13 +29,13 @@
 				onclick={() => (onClose(), goto(`${base}/models`))}
 				class="flex w-full flex-wrap items-center justify-center whitespace-nowrap rounded-full border-2 border-black bg-black px-5 py-2 text-lg font-semibold text-gray-100 transition-colors hover:bg-gray-900"
 			>
-				See all available models
+			Vaata kõiki saadaolevaid mudeleid
 			</button>
 			<button
 				onclick={onClose}
 				class="flex w-fit flex-wrap items-center justify-center whitespace-nowrap px-2 py-1 text-gray-600 transition-colors hover:text-gray-900"
 			>
-				Close
+			Sule
 			</button>
 		</div>
 	</div>

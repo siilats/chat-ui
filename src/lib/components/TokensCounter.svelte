@@ -39,6 +39,6 @@
 	<div
 		class="invisible absolute -top-6 right-0 whitespace-nowrap rounded bg-black px-1 text-sm text-white peer-hover:visible"
 	>
-		Tokens usage
+		Tokenid kasutus
 	</div>
 </div>

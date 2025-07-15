@@ -62,7 +62,7 @@
 
 <button
 	class={classNames}
-	title={"Copy to clipboard"}
+	title={"Kopeeri kleebi"}
 	type="button"
 	onclick={() => {
 		onClick?.();

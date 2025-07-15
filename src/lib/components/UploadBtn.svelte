@@ -30,5 +30,5 @@
 		onchange={onFileChange}
 		accept={mimeTypes.join(",")}
 	/>
-	<CarbonUpload class="mr-2 text-xxs" /> Upload file
+	<CarbonUpload class="mr-2 text-xxs" /> Laadi fail üles
 </button>

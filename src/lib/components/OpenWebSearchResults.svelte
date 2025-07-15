@@ -59,12 +59,12 @@
 			<IconInternet classNames="relative fill-current text-xl" />
 		</div>
 		<dl class="leading-4">
-			<dd class="text-sm">Web Search</dd>
+			<dd class="text-sm">Veebis otsing</dd>
 			<dt class="flex items-center gap-1 truncate whitespace-nowrap text-[.82rem] text-gray-400">
 				{#if sources}
-					Completed
+					Valmis
 				{:else}
-					{"message" in lastMessage ? lastMessage.message : "An error occurred"}
+					{"message" in lastMessage ? lastMessage.message : "Viga"}
 				{/if}
 			</dt>
 		</dl>

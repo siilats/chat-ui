@@ -124,7 +124,7 @@
 			>
 				{#if inputValue === ""}
 					<p class="px-3 py-2 text-left text-xs text-gray-500">
-						Start typing to search for tools...
+						Küsi tööriistade otsimiseks...
 					</p>
 				{:else}
 					{#each suggestions as suggestion}
@@ -139,7 +139,7 @@
 						>
 							{suggestion.displayName}
 							{#if suggestion.createdByName}
-								<span class="text-xs text-gray-500"> by {suggestion.createdByName}</span>
+								<span class="text-xs text-gray-500"> {suggestion.createdByName} poolt</span>
 							{/if}
 						</button>
 					{/each}

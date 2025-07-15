@@ -602,12 +602,11 @@
 			</div>
 			<label class="pb-2 text-sm has-[:checked]:font-semibold">
 				<input type="checkbox" name="dynamicPrompt" bind:checked={dynamicPrompt} />
-				Dynamic Prompt
+				Dünaamiline viip
 				<p class="mb-2 text-xs font-normal text-gray-500">
-					Allow the use of template variables {"{{get=https://example.com/path}}"}
-					to insert dynamic content into your prompt by making GET requests to specified URLs on each
-					inference. You can also send the user's message as the body of a POST request, using {"{{post=https://example.com/path}}"}.
-					Use {"{{today}}"} to include the current date.
+					Luba mallimuutujate {"{{get=https://example.com/path}}"} kasutamine dünaamilise sisu lisamiseks oma päringusse, tehes iga järelduse korral GET-päringuid määratud URL-idele.
+					Samuti saate kasutaja sõnumi saata POST-päringu sisuna, kasutades {"{{post=https://example.com/path}}"}.
+					Kasutage praeguse kuupäeva lisamiseks {"{{today}}"}.
 				</p>
 			</label>
 
@@ -615,7 +614,7 @@
 				<textarea
 					name="preprompt"
 					class="min-h-[8lh] flex-1 rounded-lg border-2 border-gray-200 bg-gray-100 p-2 text-sm"
-					placeholder="You'll act as..."
+					placeholder="Sa oled..."
 					bind:value={systemPrompt}
 					oninput={() => clearError("preprompt")}
 				></textarea>
@@ -638,7 +637,7 @@
 					href={assistant ? `${base}/settings/assistants/${assistant?._id}` : `${base}/settings`}
 					class="flex items-center justify-center rounded-full bg-gray-200 px-5 py-2 font-semibold text-gray-600"
 				>
-					Cancel
+				Tühista
 				</a>
 				<button
 					type="submit"
@@ -649,7 +648,7 @@
 					class:text-gray-600={loading}
 					class:text-white={!loading}
 				>
-					{assistant ? "Save" : "Create"}
+					{assistant ? "Salvesta" : "Loo"}
 				</button>
 			</div>
 		</div>

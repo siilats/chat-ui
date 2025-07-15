@@ -30,13 +30,13 @@
 				>
 				{#if value.createdByName}
 					<p class="text-center text-xs text-gray-500">
-						Created by
+						Loonud
 						<a class="underline" href="{base}/tools?user={value.createdByName}" target="_blank"
 							>{value.createdByName}</a
 						>
 					</p>
 				{:else}
-					<p class="text-center text-xs text-gray-500">Official HuggingChat tool</p>
+					<p class="text-center text-xs text-gray-500">Ametlik HuggingChat tööriist</p>
 				{/if}
 			</div>
 		{/await}

@@ -184,7 +184,7 @@
 	</div>
 	{#if assistant.exampleInputs && assistant.exampleInputs.length > 0}
 		<div class="lg:col-span-9 lg:mt-6">
-			<p class="mb-3 text-center text-gray-600 dark:text-gray-300 lg:text-left">Examples</p>
+			<p class="mb-3 text-center text-gray-600 dark:text-gray-300 lg:text-left">Näited</p>
 			<div
 				class="flex max-h-60 gap-2 overflow-x-auto pb-2 text-center scrollbar-thin scrollbar-thumb-gray-300 dark:scrollbar-thumb-gray-700 lg:grid lg:grid-cols-3 lg:overflow-y-auto lg:text-left"
 			>

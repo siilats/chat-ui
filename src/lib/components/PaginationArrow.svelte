@@ -19,9 +19,9 @@
 >
 	{#if direction === "previous"}
 		<CarbonCaretLeft classNames="mr-1.5" />
-		Previous
+		Eelmine
 	{:else}
-		Next
+		Edasi
 		<CarbonCaretRight classNames="ml-1.5" />
 	{/if}
 </a>

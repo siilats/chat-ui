@@ -168,7 +168,7 @@
 	);
 
 	function onShare() {
-		if (!confirm("Are you sure you want to share this conversation? This cannot be undone.")) {
+		if (!confirm("Kas olete kindel, et soovite seda konversatsiooni jagada? See ei saa tulla tagasi.")) {
 			return;
 		}
 
@@ -408,7 +408,7 @@
 			</div>
 			<form
 				tabindex="-1"
-				aria-label={isFileUploadEnabled ? "file dropzone" : undefined}
+				aria-label={isFileUploadEnabled ? "failide tilkade tsoon" : undefined}
 				onsubmit={(e) => {
 					e.preventDefault();
 					handleSubmit();
@@ -427,11 +427,11 @@
 						class:paste-glow={pastedLongContent}
 					>
 						{#if lastIsError}
-							<ChatInput value="Sorry, something went wrong. Please try again." disabled={true} />
+							<ChatInput value="Vabandust, midagi läks valesti. Palun proovige uuesti." disabled={true} />
 						{:else}
 							<ChatInput
 								{assistant}
-								placeholder={isReadOnly ? "This conversation is read-only." : "Ask anything"}
+								placeholder={isReadOnly ? "See vestlus on kirjutuskaitstud." : "Küsi midagi..."}
 								{loading}
 								bind:value={message}
 								bind:files
@@ -457,7 +457,7 @@
 								class="btn absolute bottom-2 right-2 size-7 self-end rounded-full border bg-white text-black shadow transition-none enabled:hover:bg-white enabled:hover:shadow-inner disabled:text-gray-400/50 disabled:opacity-60 dark:border-gray-600 dark:bg-gray-900 dark:text-white dark:hover:enabled:bg-black dark:disabled:text-gray-600/50"
 								disabled={!message || isReadOnly}
 								type="submit"
-								aria-label="Send message"
+								aria-label="Saada sõnum"
 								name="submit"
 							>
 								<svg
@@ -513,8 +513,7 @@
 							</span>
 						{/if}
 					{/if}
-					<span class="max-sm:hidden">·</span><br class="sm:hidden" /> Generated content may be inaccurate
-					or false.
+					<span class="max-sm:hidden">·</span><br class="sm:hidden" /> Loodud sisu võib olla ebatäpne või vale.
 				</p>
 				{#if messages.length}
 					<button
@@ -526,10 +525,10 @@
 					>
 						{#if isSharedRecently}
 							<CarbonCheckmark class="text-[.6rem] sm:mr-1.5 sm:text-green-600" />
-							<div class="text-green-600 max-sm:hidden">Link copied to clipboard</div>
+							<div class="text-green-600 max-sm:hidden">Link kopeeritud kleebi</div>
 						{:else}
 							<CarbonExport class="sm:text-primary-500 text-[.6rem] sm:mr-1.5" />
-							<div class="max-sm:hidden">Share this conversation</div>
+							<div class="max-sm:hidden">Jaga seda vestlust</div>
 						{/if}
 					</button>
 				{/if}

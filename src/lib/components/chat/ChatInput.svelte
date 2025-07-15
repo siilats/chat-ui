@@ -212,7 +212,7 @@
 					>
 						<IconInternet classNames="text-xl" />
 						{#if webSearchIsOn}
-							Search
+							Otsi
 						{/if}
 					</button>
 				</HoverTooltip>
@@ -246,7 +246,7 @@
 					>
 						<IconImageGen classNames="text-xl" />
 						{#if imageGenIsOn}
-							Image Gen
+							Pilt Gen
 						{/if}
 					</button>
 				</HoverTooltip>
@@ -265,8 +265,8 @@
 				<div class="flex items-center">
 					<HoverTooltip
 						label={mimeTypesString.includes("*")
-							? "Upload any file"
-							: `Upload ${mimeTypesString} files`}
+							? "Laadi üles mis tahes fail"
+							: `Laadi üles ${mimeTypesString} failid`}
 						position="top"
 						TooltipClassNames="text-xs !text-left !w-auto whitespace-nowrap !py-1 !mb-0 max-sm:hidden"
 					>
@@ -281,7 +281,7 @@
 							/>
 							<IconPaperclip classNames="text-xl" />
 							{#if documentParserIsOn}
-								Document Parser
+							Dokumendi parsija
 							{/if}
 						</label>
 					</HoverTooltip>

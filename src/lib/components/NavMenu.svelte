@@ -114,7 +114,7 @@
 			onclick={handleNewChatClick}
 			class="flex rounded-lg border bg-white px-2 py-0.5 text-center shadow-sm hover:shadow-none dark:border-gray-600 dark:bg-gray-700 sm:text-smd"
 		>
-			New Chat
+			Uus vestlus
 		</a>
 	{/if}
 </div>
@@ -129,7 +129,7 @@
 		}}
 	>
 		<CarbonSearch class="text-xs" />
-		<span class="block">Search chats</span>
+		<span class="block">Otsi vestlusid</span>
 		{#if !isVirtualKeyboard()}
 			<span class="invisible ml-auto text-xs text-gray-500 group-hover:visible"
 				><kbd>ctrl</kbd>+<kbd>k</kbd></span
@@ -186,7 +186,7 @@
 				<span
 					class="ml-auto h-6 flex-none items-center gap-1.5 rounded-md border bg-white px-2 text-gray-700 shadow-sm group-hover:flex hover:shadow-none dark:border-gray-600 dark:bg-gray-600 dark:text-gray-400 dark:hover:text-gray-300 md:hidden"
 				>
-					Sign Out
+					Ulogi välja
 				</span>
 			{/if}
 		</button>
@@ -196,7 +196,7 @@
 			href="{base}/login"
 			class="flex h-9 w-full flex-none items-center gap-1.5 rounded-lg pl-2.5 pr-2 text-gray-500 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700"
 		>
-			Login
+			Sisse logi
 		</a>
 	{/if}
 	{#if nModels > 1}
@@ -204,7 +204,7 @@
 			href="{base}/models"
 			class="flex h-9 flex-none items-center gap-1.5 rounded-lg pl-2.5 pr-2 text-gray-500 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700"
 		>
-			Models
+			Mudelid
 			<span
 				class="ml-auto rounded-full border border-gray-300 px-2 py-0.5 text-xs text-gray-500 dark:border-gray-500 dark:text-gray-400"
 				>{nModels}</span
@@ -216,7 +216,7 @@
 			href="{base}/assistants"
 			class="flex h-9 flex-none items-center gap-1.5 rounded-lg pl-2.5 pr-2 text-gray-500 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700"
 		>
-			Assistants
+			Asistendid
 		</a>
 	{/if}
 	{#if $page.data.enableCommunityTools}
@@ -224,10 +224,10 @@
 			href="{base}/tools"
 			class="flex h-9 flex-none items-center gap-1.5 rounded-lg pl-2.5 pr-2 text-gray-500 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700"
 		>
-			Tools
+			Tööriistad
 			<span
 				class="ml-auto rounded-full border border-purple-300 px-2 py-0.5 text-xs text-purple-500 dark:border-purple-500 dark:text-purple-400"
-				>New</span
+				>Uus</span
 			>
 		</a>
 	{/if}
@@ -237,7 +237,7 @@
 			href="{base}/settings"
 			class="flex h-9 flex-none flex-grow items-center gap-1.5 rounded-lg pl-2.5 pr-2 text-gray-500 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700"
 		>
-			Settings
+			Sätted
 		</a>
 		<button
 			onclick={() => {

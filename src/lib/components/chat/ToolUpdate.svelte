@@ -119,7 +119,7 @@
 			</div>
 
 			<span>
-				{toolError ? "Error calling" : toolDone ? "Called" : "Calling"} tool
+				{toolError ? "Viga" : toolDone ? "Kutsutud" : "Kutsutakse"} tööriistu
 				<span class="font-semibold"
 					>{availableTools.find((tool) => tool.name === toolFnName)?.displayName ??
 						toolFnName}</span
@@ -129,7 +129,7 @@
 		{#each tool as toolUpdate}
 			{#if toolUpdate.subtype === MessageToolUpdateType.Call}
 				<div class="mt-1 flex items-center gap-2 opacity-80">
-					<h3 class="text-sm">Parameters</h3>
+					<h3 class="text-sm">Parameetrid</h3>
 					<div class="h-px flex-1 bg-gradient-to-r from-gray-500/20"></div>
 				</div>
 				<ul class="py-1 text-sm">
@@ -144,13 +144,13 @@
 				</ul>
 			{:else if toolUpdate.subtype === MessageToolUpdateType.Error}
 				<div class="mt-1 flex items-center gap-2 opacity-80">
-					<h3 class="text-sm">Error</h3>
+					<h3 class="text-sm">Viga</h3>
 					<div class="h-px flex-1 bg-gradient-to-r from-gray-500/20"></div>
 				</div>
 				<p class="text-sm">{toolUpdate.message}</p>
 			{:else if isMessageToolResultUpdate(toolUpdate) && toolUpdate.result.status === ToolResultStatus.Success && toolUpdate.result.display}
 				<div class="mt-1 flex items-center gap-2 opacity-80">
-					<h3 class="text-sm">Result</h3>
+					<h3 class="text-sm">Tulemus</h3>
 					<div class="h-px flex-1 bg-gradient-to-r from-gray-500/20"></div>
 				</div>
 				<ul class="py-1 text-sm">

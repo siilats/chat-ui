@@ -41,7 +41,7 @@
 	<div class="my-2 flex flex-1 flex-col items-start truncate">
 		<span>
 			{#if confirmDelete}
-				<span class="mr-1 font-semibold"> Delete </span>
+				<span class="mr-1 font-semibold"> Kustuta </span>
 			{/if}
 			{#if conv.avatarUrl}
 				{#await conv.avatarUrl then avatarUrl}
@@ -107,7 +107,7 @@
 				title="Edit conversation title"
 				onclick={(e) => {
 					e.preventDefault();
-					const newTitle = prompt("Edit this conversation title:", conv.title);
+					const newTitle = prompt("Muuda selle vestluse pealkirja:", conv.title);
 					if (!newTitle) return;
 					dispatch("editConversationTitle", { id: conv.id.toString(), title: newTitle });
 				}}

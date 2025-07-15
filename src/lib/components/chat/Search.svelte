@@ -172,7 +172,7 @@
 					{/each}
 				{:else if conversations.length === 0}
 					<p class="bg-gray-200 p-2 text-gray-700 dark:bg-gray-800 dark:text-gray-300">
-						No conversations found matching that query
+						Sellele päringule vastavaid vestlusi ei leitud
 					</p>
 				{:else}
 					{#each Object.entries(groupedConversations) as [group, convs]}
