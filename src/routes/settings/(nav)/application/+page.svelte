@@ -57,9 +57,9 @@
 		<label class="mt-6 flex items-center">
 			<Switch name="hideEmojiOnSidebar" bind:checked={$settings.hideEmojiOnSidebar} />
 			<div class="inline cursor-pointer select-none items-center gap-2 pl-2 font-semibold">
-				Hide emoticons in conversation topics
+				Peida emotikoonid vestluse teemades
 				<p class="text-sm font-normal text-gray-500">
-					Emoticons are shown in the sidebar by default, enable this to hide them.
+					Emotikoonid on vaikimisi näha vasakul, lubage see, et need oleksid peidetud.
 				</p>
 			</div>
 		</label>
@@ -67,17 +67,17 @@
 		<label class="mt-6 flex items-center">
 			<Switch name="disableStream" bind:checked={$settings.disableStream} />
 			<div class="inline cursor-pointer select-none items-center gap-2 pl-2 font-semibold">
-				Disable streaming tokens
+				Keelata streamimine
 			</div>
 		</label>
 
 		<label class="mt-6 flex items-center">
 			<Switch name="directPaste" bind:checked={$settings.directPaste} />
 			<div class="inline cursor-pointer select-none items-center gap-2 pl-2 font-semibold">
-				Paste text directly into chat
+				Paste teksti otse vestlusse
 				<p class="text-sm font-normal text-gray-500">
-					By default, when pasting long text into the chat, we treat it as a plaintext file. Enable
-					this to paste directly into the chat instead.
+					Vaikimisi, kui kopeeritakse pikka teksti, käsitletakse seda lihttekstina. Lubage see, et
+					teksit kopeeritakse otse vestlusse.
 				</p>
 			</div>
 		</label>
@@ -88,20 +88,20 @@
 				target="_blank"
 				rel="noreferrer"
 				class="flex items-center underline decoration-gray-300 underline-offset-2 hover:decoration-gray-700"
-				><CarbonArrowUpRight class="mr-1.5 shrink-0 text-sm " /> Share your feedback on HuggingChat</a
+				><CarbonArrowUpRight class="mr-1.5 shrink-0 text-sm " /> Jaga oma tagasisidet HuggingChat</a
 			>
 			{#if publicConfig.isHuggingChat}
 				<a
 					href="{base}/privacy"
 					class="flex items-center underline decoration-gray-300 underline-offset-2 hover:decoration-gray-700"
-					><CarbonArrowUpRight class="mr-1.5 shrink-0 text-sm " /> About & Privacy</a
+					><CarbonArrowUpRight class="mr-1.5 shrink-0 text-sm " /> Teave ja privaatsus </a
 				>
 			{/if}
 			<button
 				onclick={async (e) => {
 					e.preventDefault();
 
-					confirm("Are you sure you want to delete all conversations?") &&
+					confirm("Kas oled kindel, et soovid kõiki vestlusid kustutada?") &&
 						client.conversations
 							.delete()
 							.then(async () => {
@@ -114,7 +114,7 @@
 				}}
 				type="submit"
 				class="flex items-center underline decoration-gray-300 underline-offset-2 hover:decoration-gray-700"
-				><CarbonTrashCan class="mr-2 inline text-sm text-red-500" />Delete all conversations</button
+				><CarbonTrashCan class="mr-2 inline text-sm text-red-500" />Kustuta kõik vestlused</button
 			>
 		</div>
 	</div>
