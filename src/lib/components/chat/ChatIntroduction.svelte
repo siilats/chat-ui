@@ -20,24 +20,22 @@
 	const dispatch = createEventDispatcher<{ message: string }>();
 </script>
 
-<div class="my-auto grid gap-8 lg:grid-cols-3">
-	<div class="lg:col-span-1">
+<div class="my-auto flex flex-col">
 		<div>
 			<div class="mb-3 flex items-center text-2xl font-semibold">
-				<Logo classNames="mr-1 flex-none" />
-				{publicConfig.PUBLIC_APP_NAME}
-				<div
+				<Logo classNames="mr-1 flex-none size-[46.66px]" />
+				<span class="text-2xl font-[700] text-[#306FC7] text-[25.3px] font-nunito">{publicConfig.PUBLIC_APP_NAME}</span>
+				<!-- <div
 					class="ml-3 flex h-6 items-center rounded-lg border border-gray-100 bg-gray-50 px-2 text-base text-gray-400 dark:border-gray-700/60 dark:bg-gray-800"
 				>
 					v{publicConfig.PUBLIC_VERSION}
-				</div>
+				</div> -->
 			</div>
-			<p class="text-base text-gray-600 dark:text-gray-400">
+			<p class="text-[18px] font-sans text-center text-[#757575] dark:text-[#575757]">
 				{publicConfig.PUBLIC_APP_DESCRIPTION ||
 					"Making the community's best AI chat models available to everyone."}
 			</p>
 		</div>
-	</div>
 	<div class="lg:col-span-2 lg:pl-24">
 		{#each JSON5.parse(publicConfig.PUBLIC_ANNOUNCEMENT_BANNERS || "[]") as banner}
 			<AnnouncementBanner classNames="mb-4" title={banner.title}>
@@ -48,7 +46,7 @@
 				>
 			</AnnouncementBanner>
 		{/each}
-		<div class="overflow-hidden rounded-xl border dark:border-gray-800">
+		<!-- <div class="overflow-hidden rounded-xl border dark:border-gray-800">
 			<div class="flex p-3">
 				<div>
 					<div class="text-sm text-gray-600 dark:text-gray-400">Praegune mudel</div>
@@ -75,18 +73,17 @@
 				>
 			</div>
 			<ModelCardMetadata variant="dark" model={currentModel} />
-		</div>
+		</div> -->
 	</div>
 	{#if currentModel.promptExamples}
 		<div class="lg:col-span-3 lg:mt-6">
-			<p class="mb-3 text-center text-gray-600 dark:text-gray-300 lg:text-left">Näited</p>
 			<div
-				class="flex max-h-60 gap-2 overflow-x-auto pb-2 text-center scrollbar-thin scrollbar-thumb-gray-300 dark:scrollbar-thumb-gray-700 lg:grid lg:grid-cols-3 lg:overflow-y-auto lg:text-left"
+				class="flex flex-col md:flex-row max-h-60 gap-2 overflow-x-auto pb-2 text-center scrollbar-thin scrollbar-thumb-gray-300 dark:scrollbar-thumb-gray-700 lg:grid lg:grid-cols-3 lg:overflow-y-auto lg:text-left"
 			>
 				{#each currentModel.promptExamples as example}
 					<button
 						type="button"
-						class="flex-shrink-0 rounded-xl border bg-gray-50 p-2.5 text-sm text-gray-600 hover:bg-gray-100 dark:border-gray-800 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700 sm:p-3 lg:w-full xl:p-3.5 xl:text-base"
+						class="flex-shrink-0 rounded-xl bg-gray-50 p-2.5 text-sm text-gray-600 hover:bg-gray-100  dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700 sm:p-3 lg:w-full xl:p-3.5 xl:text-base"
 						onclick={() => dispatch("message", example.prompt)}
 					>
 						{example.title}
@@ -95,5 +92,39 @@
 			</div>
 		</div>
 	{/if}
+	<div class="flex flex-col items-center w-full">
+		<div class="mb-3 flex items-center text-2xl font-semibold">
+			<span class="text-[24px] font-[700] text-[#306FC7] font-nunito">Tasuta rakendused</span>
+		</div>
+		<p class="text-[18px] font-sans text-center font-[600] text-[#757575] dark:text-[#575757]">
+			Neil kolmel rakendusel on tasuta limiidid, mis lähtestatakse iga kuu ja töötavad suurepäraselt eesti keeles.
+		</p>
+	</div>
+	<div class="w-full max-w-[400px] flex items-center justify-between">
+		<div class="flex flex-col items-center">
+			<div class="size-[77px] rounded-full bg-[#508DEF1A] flex items-center justify-center">
+				<img src="{publicConfig.assetPath}/icons/chatgpt.svg" alt="ChatGPT" class="w-full h-full object-cover">
+			</div>
+			<div class="text-[18px] font-sans text-center font-[600] text-[#757575] dark:text-[#575757]">
+				ChatGPT
+			</div>
+		</div>
+		<div class="flex flex-col items-center">
+			<div class="size-[77px] rounded-full bg-[#508DEF1A] flex items-center justify-center">
+				<img src="{publicConfig.assetPath}/icons/deepseek.svg" alt="DeepSeek" class="w-full h-full object-cover">
+			</div>
+			<div class="text-[18px] font-sans text-center font-[600] text-[#757575] dark:text-[#575757]">
+				deepseek
+			</div>
+		</div>
+		<div class="flex flex-col items-center">
+			<div class="size-[77px] rounded-full bg-[#508DEF1A] flex items-center justify-center">
+				<img src="{publicConfig.assetPath}/icons/gemini.svg" alt="Gemini" class="w-full h-full object-cover">
+			</div>
+			<div class="text-[18px] font-sans text-center font-[600] text-[#757575] dark:text-[#575757]">
+				Gemini
+			</div>
+		</div>
+	</div>
 	<div class="h-40 sm:h-24"></div>
 </div>
