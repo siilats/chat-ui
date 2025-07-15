@@ -19,7 +19,7 @@
 </script>
 
 <div class="flex w-full flex-col gap-5">
-	<h2 class="text-center text-xl font-semibold text-gray-800 md:text-left">Application Settings</h2>
+	<h2 class="text-center text-xl font-semibold text-gray-800 md:text-left">Rakenduse seaded</h2>
 	{#if !!publicConfig.PUBLIC_COMMIT_SHA}
 		<div class="flex flex-col items-start justify-between text-xl font-semibold text-gray-800">
 			<a
@@ -28,14 +28,14 @@
 				rel="noreferrer"
 				class="text-sm font-light text-gray-500"
 			>
-				Latest deployment <span class="gap-2 font-mono"
+				Viimane juurutamine <span class="gap-2 font-mono"
 					>{publicConfig.PUBLIC_COMMIT_SHA.slice(0, 7)}</span
 				>
 			</a>
 		</div>
 	{/if}
 	{#if page.data.isAdmin}
-		<p class="text-red-500">You are an admin.</p>
+		<p class="text-red-500">Sa oled administraator.</p>
 	{/if}
 	<div class="flex h-full max-w-2xl flex-col gap-2 max-sm:pt-0">
 		{#if publicConfig.PUBLIC_APP_DATA_SHARING === "1"}
@@ -45,12 +45,13 @@
 					bind:checked={$settings.shareConversationsWithModelAuthors}
 				/>
 				<div class="inline cursor-pointer select-none items-center gap-2 pl-2">
-					Share conversations with model authors
+					Jaga vestlusi mudeli autoritega
 				</div>
 			</label>
 
 			<p class="text-sm text-gray-500">
-				Sharing your data will help improve the training data and make open models better over time.
+				Andmete jagamine aitab parandada treeningandmeid ja muuta avatud mudeleid aja jooksul
+				paremaks.
 			</p>
 		{/if}
 		<label class="mt-6 flex items-center">

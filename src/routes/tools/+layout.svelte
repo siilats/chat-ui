@@ -13,10 +13,10 @@
 
 <svelte:head>
 	{#if publicConfig.isHuggingChat}
-		<title>HuggingChat - Tools</title>
-		<meta property="og:title" content="HuggingChat - Tools" />
+		<title>HuggingChat - Tööriistad</title>
+		<meta property="og:title" content="HuggingChat - Tööriistad" />
 		<meta property="og:type" content="link" />
-		<meta property="og:description" content="Browse HuggingChat tools made by the community." />
+		<meta property="og:description" content="Vaata HuggingChat tööriistu, mida kasutajad tööriistade tööriistadega töötavad." />
 		<meta property="og:image" content="{publicConfig.assetPath}/tools-thumbnail.png" />
 		<meta property="og:url" content={page.url.href} />
 	{/if}

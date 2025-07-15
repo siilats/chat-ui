@@ -91,7 +91,7 @@
 			</button>
 		{/if}
 		<h2 class="absolute left-0 right-0 mx-auto w-fit text-center text-xl font-bold md:hidden">
-			Settings
+			Seaded
 		</h2>
 		<button
 			class="btn rounded-lg"
@@ -114,7 +114,7 @@
 			<h3
 				class="px-4 pb-2 pt-3 text-center text-[.8rem] font-medium text-gray-800 md:px-3 md:text-left"
 			>
-				Models
+				Mudelid
 			</h3>
 
 			{#each data.models.filter((el) => !el.unlisted) as model}
@@ -146,13 +146,13 @@
 					bind:this={assistantsSection}
 					class="mt-6 px-4 pb-2 text-center text-[.8rem] font-medium text-gray-800 md:px-3 md:text-left"
 				>
-					Assistants
+					Assistendid
 				</h3>
 				<!-- My Assistants -->
 				<h4
 					class="px-4 pb-1 pt-2 text-center text-[.7rem] font-medium text-gray-600 md:px-3 md:text-left"
 				>
-					My Assistants
+					Minu Assistendid
 				</h4>
 
 				{#each data.assistants.filter((assistant) => assistant.createdByMe) as assistant}
@@ -195,7 +195,7 @@
 						aria-label="Create new assistant"
 					>
 						<CarbonAdd />
-						<div class="truncate">Create new assistant</div>
+						<div class="truncate">Loo uus assistent</div>
 					</button>
 				{/if}
 
@@ -203,7 +203,7 @@
 				<h4
 					class="mt-4 px-4 pb-1 pt-2 text-center text-[.7rem] font-medium text-gray-600 md:px-3 md:text-left"
 				>
-					Other Assistants
+					Teised Assistendid
 				</h4>
 
 				{#each data.assistants.filter((assistant) => !assistant.createdByMe) as assistant}
@@ -281,7 +281,7 @@
 					aria-label="Browse all assistants"
 				>
 					<CarbonArrowUpRight class="mr-1.5 shrink-0 text-xs" />
-					<div class="truncate">Browse Assistants</div>
+					<div class="truncate">Vaata Assistendid</div>
 				</button>
 			{/if}
 
@@ -291,10 +291,10 @@
 				onclick={() => goto(`${base}/settings/application`)}
 				class="group flex h-10 w-full flex-none items-center gap-2 px-4 text-sm text-gray-500 hover:bg-gray-100 max-md:order-first md:rounded-xl md:px-3
 				{page.url.pathname === `${base}/settings/application` ? '!bg-gray-100 !text-gray-800' : ''}"
-				aria-label="Configure application settings"
+				aria-label="Uuendused"
 			>
 				<UserIcon class="text-sm" />
-				Application Settings
+				Uuendused
 			</button>
 		</div>
 	{/if}

@@ -57,7 +57,7 @@
 				class="flex items-center truncate underline underline-offset-2"
 			>
 				<CarbonArrowUpRight class="mr-1.5 shrink-0 text-xs " />
-				Model page
+				Mudeli leht
 			</a>
 		{/if}
 
@@ -69,7 +69,7 @@
 				class="flex items-center truncate underline underline-offset-2"
 			>
 				<CarbonArrowUpRight class="mr-1.5 shrink-0 text-xs " />
-				Dataset page
+				Andmestiku leht
 			</a>
 		{/if}
 
@@ -81,7 +81,7 @@
 				rel="noreferrer"
 			>
 				<CarbonArrowUpRight class="mr-1.5 shrink-0 text-xs " />
-				Model website
+				Mudeli veebileht
 			</a>
 		{/if}
 
@@ -93,7 +93,7 @@
 				class="flex items-center truncate underline underline-offset-2"
 			>
 				<CarbonCode class="mr-1.5 shrink-0 text-xs " />
-				API Playground
+				API mänguväljak
 			</a>
 		{/if}
 
@@ -102,14 +102,14 @@
 			classNames="!border-none !shadow-none !py-0 !px-1 !rounded-md"
 		>
 			<div class="flex items-center gap-1.5 hover:underline">
-				<CarbonLink />Copy direct link to model
+				<CarbonLink />Kopeeri mudeli link
 			</div>
 		</CopyToClipBoardBtn>
 	</div>
 
 	<button
 		class="my-2 flex w-fit items-center rounded-full bg-black px-3 py-1 text-base !text-white"
-		name="Activate model"
+		name="Aktiveeri mudel"
 		onclick={(e) => {
 			e.stopPropagation();
 			settings.instantSet({
@@ -119,12 +119,12 @@
 		}}
 	>
 		<CarbonChat class="mr-1.5 text-sm" />
-		Uus Vestlus
+		Uus vestlus
 	</button>
 
 	<div class="relative flex w-full flex-col gap-2">
 		<div class="flex w-full flex-row content-between">
-			<h3 class="mb-1.5 text-lg font-semibold text-gray-800">System Prompt</h3>
+			<h3 class="mb-1.5 text-lg font-semibold text-gray-800">Süsteemi seaded</h3>
 			{#if hasCustomPreprompt}
 				<button
 					class="ml-auto underline decoration-gray-300 hover:decoration-gray-700"
@@ -133,12 +133,12 @@
 						$settings.customPrompts[page.params.model] = model.preprompt;
 					}}
 				>
-					Reset
+					Lähtesta
 				</button>
 			{/if}
 		</div>
 		<textarea
-			aria-label="Custom system prompt"
+			aria-label="Kohandatud süsteemi seaded"
 			rows="10"
 			class="w-full resize-none rounded-md border-2 bg-gray-100 p-2"
 			bind:value={$settings.customPrompts[page.params.model]}

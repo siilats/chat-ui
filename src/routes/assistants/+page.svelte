@@ -105,14 +105,14 @@
 
 <svelte:head>
 	{#if publicConfig.isHuggingChat}
-		<title>HuggingChat - Assistants</title>
-		<meta property="og:title" content="HuggingChat - Assistants" />
+		<title>HuggingChat - Assistendid</title>
+		<meta property="og:title" content="HuggingChat - Assistendid" />
 		<meta property="og:type" content="link" />
 		<meta
 			property="og:description"
-			content="Browse HuggingChat assistants made by the community."
+			content="Vaadake HuggingChat assistentide, mida kogukond loodi."
 		/>
-		<meta property="og:image" content="{publicConfig.assetPath}/assistants-thumbnail.png" />
+		<meta property="og:image" content="{publicConfig.assetPath}/assistents-thumbnail.png" />
 		<meta property="og:url" content={page.url.href} />
 	{/if}
 </svelte:head>
@@ -120,38 +120,41 @@
 <div class="scrollbar-custom h-full overflow-y-auto py-12 max-sm:pt-8 md:py-24">
 	<div class="pt-42 mx-auto flex flex-col px-5 xl:w-[60rem] 2xl:w-[64rem]">
 		<div class="flex items-center">
-			<h1 class="text-2xl font-bold">Assistants</h1>
+			<h1 class="text-2xl font-bold">Assistendid</h1>
 			{#if publicConfig.isHuggingChat}
 				<div class="5 ml-1.5 rounded-lg text-xxs uppercase text-gray-500 dark:text-gray-500">
-					beta
+					beeta
 				</div>
 				<a
 					href="https://huggingface.co/spaces/huggingchat/chat-ui/discussions/357"
 					class="ml-auto dark:text-gray-400 dark:hover:text-gray-300"
 					target="_blank"
-					aria-label="Hub discussion about assistants"
+					aria-label="Hub arutelu assistentide kohta"
 				>
 					<CarbonHelpFilled />
 				</a>
 			{/if}
 		</div>
-		<h2 class="text-gray-500">Popular assistants made by the community</h2>
+		<h2 class="text-gray-500">Kogukonna loodud populaarsed assistendid</h2>
 		<div class="mt-6 flex justify-between gap-2 max-sm:flex-col sm:items-center">
 			<select
 				class="mt-1 h-[34px] rounded-lg border border-gray-300 bg-gray-50 px-2 text-sm text-gray-900 focus:border-blue-700 focus:ring-blue-700 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400"
 				bind:value={data.selectedModel}
 				onchange={onModelChange}
-				aria-label="Filter assistants by model"
+				aria-label="Filtreeri assistente mudeli järgi"
 			>
-				<option value="">All models</option>
+				<option value="">Kõik mudelid</option>
 				{#each data.models.filter((model) => !model.unlisted) as model}
 					<option value={model.name}>{model.name}</option>
 				{/each}
 			</select>
 			{#if data.isAdmin}
-				<label class="mr-auto flex items-center gap-1 text-red-500" title="Admin only feature">
+				<label
+					class="mr-auto flex items-center gap-1 text-red-500"
+					title="Ainult administraatori funktsioon"
+				>
 					<input type="checkbox" checked={showUnfeatured} onchange={toggleShowUnfeatured} />
-					Show unfeatured assistants
+					Näita esile tõstmata assistente
 				</label>
 			{/if}
 			{#if page.data.loginRequired && !data.user}
@@ -161,14 +164,14 @@
 					}}
 					class="flex items-center gap-1 whitespace-nowrap rounded-lg border bg-white py-1 pl-1.5 pr-2.5 shadow-sm hover:bg-gray-50 hover:shadow-none dark:border-gray-600 dark:bg-gray-700 dark:hover:bg-gray-700"
 				>
-					<CarbonAdd />Create new assistant
+					<CarbonAdd />Loo uus assistent
 				</button>
 			{:else}
 				<a
 					href={`${base}/settings/assistants/new`}
 					class="flex items-center gap-1 whitespace-nowrap rounded-lg border bg-white py-1 pl-1.5 pr-2.5 shadow-sm hover:bg-gray-50 hover:shadow-none dark:border-gray-600 dark:bg-gray-700 dark:hover:bg-gray-700"
 				>
-					<CarbonAdd />Create new assistant
+					<CarbonAdd />Loo uus assistent
 				</a>
 			{/if}
 		</div>
@@ -178,7 +181,7 @@
 				<div
 					class="flex items-center gap-1.5 rounded-full border border-gray-300 bg-gray-50 px-3 py-1 dark:border-gray-600 dark:bg-gray-700 dark:text-white"
 				>
-					{assistantsCreator}'s Assistants
+					{assistantsCreator} Assistendid
 					<a
 						href={getHref(page.url, {
 							existingKeys: { behaviour: "delete", keys: ["user", "modelId", "p", "q"] },
@@ -195,8 +198,8 @@
 						href="https://hf.co/{assistantsCreator}"
 						target="_blank"
 						class="ml-auto flex items-center text-xs text-gray-500 underline hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-300"
-						><CarbonArrowUpRight class="mr-1 flex-none text-[0.58rem]" target="_blank" />View {assistantsCreator}
-						on HF</a
+						><CarbonArrowUpRight class="mr-1 flex-none text-[0.58rem]" target="_blank" />Vaata {assistantsCreator}
+						HF-is</a
 					>
 				{/if}
 			{:else}
@@ -210,7 +213,7 @@
 						: 'border-transparent text-gray-400 hover:text-gray-800 dark:hover:text-gray-300'}"
 				>
 					<CarbonEarthAmerica class="text-xs" />
-					Community
+					Kogukond
 				</a>
 				{#if data.user?.username}
 					<a
@@ -233,23 +236,23 @@
 				<CarbonSearch class="pointer-events-none absolute left-2 text-xs text-gray-400" />
 				<input
 					class="h-[30px] w-full bg-transparent pl-5 focus:outline-none"
-					placeholder="Filter by name"
+					placeholder="Filtreeri nime järgi"
 					value={filterValue}
 					oninput={(e) => filterOnName(e.currentTarget.value)}
 					bind:this={filterInputEl}
 					maxlength="150"
 					type="search"
-					aria-label="Filter assistants by name"
+					aria-label="Filtreeri assistente nime järgi"
 				/>
 			</div>
 			<select
 				bind:value={sortValue}
 				onchange={sortAssistants}
-				aria-label="Sort assistants"
+				aria-label="Sorteeri assistente"
 				class="rounded-lg border border-gray-300 bg-gray-50 px-2 py-1 text-sm text-gray-900 focus:border-blue-700 focus:ring-blue-700 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400"
 			>
-				<option value={SortKey.TRENDING}>{SortKey.TRENDING}</option>
-				<option value={SortKey.POPULAR}>{SortKey.POPULAR}</option>
+				<option value={SortKey.TRENDING}>Trendikad</option>
+				<option value={SortKey.POPULAR}>Populaarsed</option>
 			</select>
 		</div>
 
@@ -278,7 +281,7 @@
 					{#if assistant.userCount && assistant.userCount > 1}
 						<div
 							class="absolute right-3 top-3 flex items-center gap-1 text-xs text-gray-400"
-							title="Number of users"
+							title="Kasutajate arv"
 						>
 							<CarbonUserMultiple class="text-xxs" />{formatUserCount(assistant.userCount)}
 						</div>
@@ -288,7 +291,7 @@
 						{#if assistant.tools?.length}
 							<div
 								class="grid size-5 place-items-center rounded-full bg-purple-500/10"
-								title="This assistant can use tools"
+								title="See assistent saab kasutada tööriistu"
 							>
 								<CarbonTools class="text-xs text-purple-600" />
 							</div>
@@ -296,7 +299,7 @@
 						{#if hasRag}
 							<div
 								class="grid size-5 place-items-center rounded-full bg-blue-500/10"
-								title="This assistant uses the websearch."
+								title="See assistent kasutab veebiotsingut"
 							>
 								<IconInternet classNames="text-sm text-blue-600" />
 							</div>
@@ -326,17 +329,17 @@
 					</p>
 					{#if assistant.createdByName}
 						<p class="mt-auto pt-2 text-xs text-gray-400 dark:text-gray-500">
-							Created by <a
+							Loodud kasutaja <a
 								class="hover:underline"
 								href="{base}/assistants?user={assistant.createdByName}"
 							>
 								{assistant.createdByName}
-							</a>
+							</a> poolt
 						</p>
 					{/if}
 				</button>
 			{:else}
-				No assistants found
+				Assistente ei leitud
 			{/each}
 		</div>
 		<Pagination

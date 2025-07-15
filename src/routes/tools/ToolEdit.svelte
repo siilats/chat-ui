@@ -202,18 +202,18 @@
 >
 	{#if tool}
 		<h2 class="text-xl font-semibold">
-			{readonly ? "View" : "Edit"} Tool: {tool.displayName}
+			{readonly ? "Vaata" : "Muuda"} tööriistu: {tool.displayName}
 		</h2>
 		{#if !readonly}
 			<p class="mb-6 text-sm text-gray-500">
-				Modifying an existing tool will propagate the changes to all users.
+				Muutmine olemasolevat tööriistu levitab muudetud andmeid kõigile kasutajatele.
 			</p>
 		{/if}
 	{:else}
-		<h2 class="text-xl font-semibold">Create new tool</h2>
+		<h2 class="text-xl font-semibold">Loo uus tööriist</h2>
 		<p class="mb-6 text-sm text-gray-500">
-			Create and share your own tools. All tools are <span
-				class="rounded-full border px-2 py-0.5 leading-none">public</span
+			Loo oma tööriistu ja jaga seda. Kõik tööriistad on <span
+				class="rounded-full border px-2 py-0.5 leading-none">avalikud</span
 			>
 		</p>
 	{/if}
@@ -222,13 +222,13 @@
 		<div class="col-span-1 flex flex-col gap-4">
 			<div class="flex flex-col gap-4">
 				<label>
-					<div class="mb-1 font-semibold">Tool Display Name</div>
+					<div class="mb-1 font-semibold">Tööriistu nimi</div>
 					<input
 						type="text"
 						name="displayName"
 						disabled={readonly}
 						class="w-full rounded-lg border-2 border-gray-200 bg-gray-100 p-2"
-						placeholder="Image generator"
+						placeholder="Piltide generaator"
 						bind:value={editableTool.displayName}
 					/>
 					<p class="text-xs text-red-500">{getError("displayName")}</p>
@@ -242,7 +242,7 @@
 					</div>
 
 					<label class="flex-grow">
-						<div class="mb-1 font-semibold">Icon</div>
+						<div class="mb-1 font-semibold">Ikoon</div>
 
 						<select
 							name="icon"
@@ -258,7 +258,7 @@
 					</label>
 
 					<label class="flex-grow">
-						<div class="mb-1 font-semibold">Color scheme</div>
+						<div class="mb-1 font-semibold">Värvimisem</div>
 						<select
 							name="color"
 							disabled={readonly}
@@ -276,14 +276,14 @@
 				<label>
 					<div class=" font-semibold">Tool Description</div>
 					<p class="mb-1 text-sm text-gray-500">
-						This description will be passed to the model when picking tools. Describe what your tool
-						does and when it is appropriate to use.
+						Selle kirjelduse kasutab mudel, kui tööriistu valib. Kirjelda, mis tööriist teie tööriist
+						teeb ja kui seda kasutada.
 					</p>
 					<textarea
 						name="description"
 						disabled={readonly}
 						class="w-full rounded-lg border-2 border-gray-200 bg-gray-100 p-2"
-						placeholder="This tool lets you generate images using SDXL."
+						placeholder="See tööriist võimaldab teil luua pildi SDXL abil."
 						bind:value={editableTool.description}
 					></textarea>
 					<p class="text-xs text-red-500">{getError("description")}</p>
@@ -292,10 +292,10 @@
 				<label>
 					<div class="mb-1 font-semibold">Hugging Face Space URL</div>
 					<p class="mb-1 text-sm text-gray-500">
-						Specify the Hugging Face Space where your tool is hosted. <a
+						Speciifitseerige, kust tööriist on hostitud. <a
 							href="https://huggingface.co/spaces"
 							target="_blank"
-							class="underline">See trending spaces here</a
+							class="underline">Siit leiate trendivahendeid</a
 						>.
 					</p>
 					<input
@@ -309,27 +309,28 @@
 					<p class="text-xs text-red-500">{getError("spaceUrl")}</p>
 				</label>
 				<p class="text-justify text-gray-800">
-					Tools allows models that support them to use external application directly via function
-					calling. Tools must use Hugging Face Gradio Spaces as we detect the input and output types
-					automatically from the <a
-						class="underline"
-						href="https://www.gradio.app/guides/sharing-your-app#api-page">Gradio API</a
-					>. For GPU intensive tool consider using a ZeroGPU Space.
+					Tööriistad võimaldavad mudelitele kasutada tööriistude kaudu tööriistade kaudu. Tööriistade
+					peab kasutama Hugging Face Gradio Spaces, kuna me käsitsi käsitleme sisendit ja väljundit.
+					Kasutage ZeroGPU Spaces, kui tööriist on GPU intensiivne.
+					<a
+						href="https://www.gradio.app/guides/sharing-your-app#api-page"
+						class="underline">Gradio API</a
+					>
 				</p>
 			</div>
 		</div>
 		<div class="col-span-1 flex flex-col gap-4">
 			<div class="flex flex-col gap-2">
-				<h3 class="mb-1 font-semibold">Functions</h3>
+				<h3 class="mb-1 font-semibold">Funktsioonid</h3>
 				{#if editableTool.baseUrl}
-					<p class="text-sm text-gray-500">Choose functions that can be called in your tool.</p>
+					<p class="text-sm text-gray-500">Vali funktsioonid, mida saab tööriistas kasutada.</p>
 				{:else}
-					<p class="text-sm text-gray-500">Start by specifying a Hugging Face Space URL.</p>
+					<p class="text-sm text-gray-500">Alusta, kui specefiseerige Hugging Face Space URL.</p>
 				{/if}
 
 				{#if editableTool.baseUrl}
 					{#await client["spaces-config"].get({ query: { space: spaceUrl } }).then(handleResponse)}
-						<p class="text-sm text-gray-500">Loading...</p>
+						<p class="text-sm text-gray-500">Laadimine...</p>
 					{:then api}
 						<div class="flex flex-row flex-wrap gap-4">
 							{#each Object.keys(api["named_endpoints"] ?? {}) as name}
@@ -363,14 +364,14 @@
 											<span
 												class="group relative flex w-max items-center justify-center text-sm font-semibold text-gray-700"
 											>
-												AI Function Name
+												AI Funktsiooni nimi
 												<CarbonInformation class="m-1 align-middle text-xs text-purple-500" />
 												<div
 													class="pointer-events-none absolute -top-16 right-0 w-max rounded-md bg-gray-100 p-2 opacity-0 transition-opacity group-hover:opacity-100 dark:bg-gray-800"
 												>
 													<p class="max-w-sm text-sm font-normal text-gray-800 dark:text-gray-200">
-														This is the function name that will be used when prompting the model.
-														Make sure it describes your tool well, is short and unique.
+														See on funktsiooni nimi, mida mudel kasutab, kui tööriistu valib.
+														Kinnitage, et see kirjeldab tööriistu hästi, on lühike ja unikaalne.
 													</p>
 												</div>
 											</span>
@@ -385,9 +386,9 @@
 									</div>
 
 									<div>
-										<h3 class="text-lg font-semibold">Arguments</h3>
+										<h3 class="text-lg font-semibold">Parameetrid</h3>
 										<p class="mb-2 text-sm text-gray-500">
-											Choose parameters that can be passed to your tool.
+											Vali parameetrid, mida saab tööriistasse edastada.
 										</p>
 									</div>
 
@@ -421,7 +422,7 @@
 															disabled={readonly}
 															bind:group={editableTool.inputs[inputIdx].paramType}
 														/>
-														<span class="text-sm text-gray-500">Required</span>
+														<span class="text-sm text-gray-500">Nõutav</span>
 													</label>
 													<label class="ml-auto">
 														<input
@@ -431,7 +432,7 @@
 															disabled={readonly || parameter?.python_type.type === "filepath"}
 															bind:group={editableTool.inputs[inputIdx].paramType}
 														/>
-														<span class="text-sm text-gray-500">Optional</span>
+														<span class="text-sm text-gray-500">Valikuline</span>
 													</label>
 													<label class="ml-auto">
 														<input
@@ -441,7 +442,7 @@
 															disabled={readonly || parameter?.python_type.type === "filepath"}
 															bind:group={editableTool.inputs[inputIdx].paramType}
 														/>
-														<span class="text-sm text-gray-500">Fixed</span>
+														<span class="text-sm text-gray-500">Fikseeritud</span>
 													</label>
 												</div>
 											</div>
@@ -450,16 +451,16 @@
 										{#if input.paramType === "required" || input.paramType === "optional"}
 											<label class="flex flex-row gap-2">
 												<div class="mb-1 font-semibold">
-													Description
+													Kirjeldus
 													<p class="text-xs font-normal text-gray-500">
-														Will be passed in the model prompt, make it as clear and concise as
-														possible
+														Kasutatakse mudeli küsimisel, kui see on tööriistu nõutav.
+														Kinnitage, et see kirjeldus on selge ja küllalt lühike.
 													</p>
 												</div>
 												<textarea
 													name="{input.name}-description"
 													class="w-full rounded-lg border-2 border-gray-200 bg-gray-100 p-2"
-													placeholder="This is the description of the input."
+													placeholder="See on tööriistu kirjeldus."
 													bind:value={input.description}
 													disabled={readonly}
 												></textarea>
@@ -469,13 +470,12 @@
 											{@const isOptional = input.paramType === "optional"}
 											<div class="flex flex-row gap-2">
 												<div class="mb-1 flex-grow font-semibold">
-													{isOptional ? "Default value" : "Value"}
+													{isOptional ? "Vaikimisi väärtus" : "Väärtus"}
 													<p class="text-xs font-normal text-gray-500">
 														{#if isOptional}
-															The tool will use this value by default but the model can specify a
-															different one.
+															Tööriist kasutab seda väärtust vaikimisi, kuid mudel võib määrata teise.
 														{:else}
-															The tool will use this value and it cannot be changed.
+															Tööriist kasutab seda väärtust ja see ei saa muutuda.
 														{/if}
 													</p>
 												</div>
@@ -497,10 +497,9 @@
 										{#if input.type === "file"}
 											<label class="flex flex-row gap-2">
 												<div class="mb-1 font-semibold">
-													MIME types
+													MIME tüübid
 													<p class="text-xs font-normal text-gray-500">
-														This input is a file. Specify the MIME types that are allowed to be
-														passed to the tool.
+														See sisend on fail. Määrake, millised MIME tüübid on lubatud.
 													</p>
 												</div>
 												<select
@@ -526,17 +525,17 @@
 
 									<div class="flex flex-col gap-4">
 										<div>
-											<h3 class="text-lg font-semibold">Output options</h3>
+											<h3 class="text-lg font-semibold">Väljundvõimalused</h3>
 											<p class="mb-2 text-sm text-gray-500">
-												Choose what value your tool will return and how
+												Vali, mis väärtus tööriist tagastab ja kuidas.
 											</p>
 										</div>
 
 										<label class="flex flex-col gap-2" for="showOutput">
 											<div class="mb-1 font-semibold">
-												Output component
+												Väljundkomponent
 												<p class="text-xs font-normal text-gray-500">
-													Pick the gradio output component whose output will be used in the tool.
+													Vali gradio väljundkomponent, mille väljund kasutatakse tööriistas.
 												</p>
 											</div>
 											{#if editableTool.outputComponent}
@@ -579,10 +578,9 @@
 
 										<label class="flex flex-row gap-2" for="showOutput">
 											<div class="mb-1 font-semibold">
-												Show output to user directly
+												Kuva väljund kasutajale otse
 												<p class="text-xs font-normal text-gray-500">
-													Some tools return long context that should not be shown to the user
-													directly.
+													Mõned tööriistad tagastavad pika konteksti, mida ei tohiks kasutajale otse näidata.
 												</p>
 											</div>
 											<input
@@ -599,10 +597,10 @@
 								</div>
 							</div>
 						{:else if APIloading}
-							<p class="text-sm text-gray-500">Loading API...</p>
+							<p class="text-sm text-gray-500">Laadimine...</p>
 						{:else if !api["named_endpoints"]}
 							<p class="font-medium text-red-800">
-								No endpoints found in this space. Try another one.
+								Siin tööriistas ei leitud funktsioone. Proovi teist tööriistu.
 							</p>
 						{/if}
 					{:catch rejected}
@@ -616,7 +614,7 @@
 					class="mt-4 w-fit rounded-full bg-gray-200 px-4 py-2 font-semibold text-gray-700"
 					onclick={() => dispatch("close")}
 				>
-					Cancel
+					Loobu
 				</button>
 				{#if !readonly}
 					<button
@@ -627,7 +625,7 @@
 						class:text-gray-300={formLoading || !formSubmittable}
 						class:bg-gray-400={formLoading || !formSubmittable}
 					>
-						{formLoading ? "Saving..." : "Save"}
+						{formLoading ? "Salvestamine..." : "Salvesta"}
 					</button>
 				{/if}
 			</div>

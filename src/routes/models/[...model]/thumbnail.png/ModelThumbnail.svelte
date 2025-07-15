@@ -25,9 +25,9 @@
 		class="flex h-[200px] w-full flex-col items-center justify-center rounded-b-none bg-{publicConfig.PUBLIC_APP_COLOR}-500/10 pb-10 pt-10 text-4xl text-gray-500"
 		style="border-radius: 100% 100% 0 0;"
 	>
-		Try it now
+		Proovi nüüd
 		{#if publicConfig.isHuggingChat}
-			on
+			HuggingChat-is
 		{/if}
 
 		{#if publicConfig.isHuggingChat}

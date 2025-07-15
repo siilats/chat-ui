@@ -86,7 +86,7 @@
 							{data.tool.displayName}
 						</h1>
 						<span class="inline rounded-full border px-2 py-0.5 text-sm leading-none text-gray-500"
-							>public</span
+							>avalik</span
 						>
 					</div>
 
@@ -108,15 +108,15 @@
 
 					{#if data.tool.type === "community"}
 						<p class="text-sm text-gray-500">
-							Added by
+							Loodud kasutaja
 							<a class="underline" href="{base}/tools?user={data.tool?.createdByName}">
 								{data.tool?.createdByName}
 							</a>
 							<span class="text-gray-300">•</span>
 							{#if data.tool.useCount === 1}
-								1 run
+								1 kasutus
 							{:else}
-								{data.tool.useCount} runs
+								{data.tool.useCount} kasutust
 							{/if}
 						</p>
 					{/if}
@@ -151,13 +151,13 @@
 									disabled
 									class="mx-auto my-2 flex w-min items-center justify-center rounded-full bg-gray-200 px-3 py-1 text-base text-gray-500"
 								>
-									Activate
+									Aktiivne
 								</button>
 							{/if}
 						</div>
 						{#if data.tool?.createdByMe}
 							<a href="{base}/tools/{data.tool?._id}/edit" class="underline"
-								><CarbonPen class="mr-1.5 inline text-xs" />Edit
+								><CarbonPen class="mr-1.5 inline text-xs" />Muuda
 							</a>
 							<form
 								onsubmit={() => {
@@ -182,16 +182,16 @@
 										}
 									}}
 								>
-									<CarbonTrash class="mr-1.5 inline text-xs" />Delete
+									<CarbonTrash class="mr-1.5 inline text-xs" />Kustuta
 								</button>
 							</form>
 						{:else if !!data.tool?.baseUrl}
 							<a href="{base}/tools/{data.tool?._id}/edit" class="underline">
-								<CarbonPen class="mr-1.5 inline text-xs" />View spec
+								<CarbonPen class="mr-1.5 inline text-xs" />Vaata spetsiifikatsiooni
 							</a>
 							<form method="POST" action="?/edit" use:enhance class="hidden">
 								<button type="submit" class="underline">
-									<CarbonCopy class="mr-1.5 inline text-xs" />Duplicate</button
+									<CarbonCopy class="mr-1.5 inline text-xs" />Duplikaat</button
 								>
 							</form>
 							{#if !data.tool?.reported}
@@ -202,11 +202,11 @@
 									}}
 									class="underline"
 								>
-									<CarbonFlag class="mr-1.5 inline text-xs" />Report
+									<CarbonFlag class="mr-1.5 inline text-xs" />Avalda
 								</button>
 							{:else}
 								<button type="button" disabled class="text-gray-700">
-									<CarbonFlag class="mr-1.5 inline text-xs" />Reported</button
+									<CarbonFlag class="mr-1.5 inline text-xs" />Avaldatud</button
 								>
 							{/if}
 						{/if}
@@ -239,34 +239,34 @@
 											}
 										}}
 									>
-										<CarbonTrash class="mr-1.5 inline text-xs" />Delete
+										<CarbonTrash class="mr-1.5 inline text-xs" />Kustuta
 									</button>
 								</form>
 							{/if}
 							{#if data.tool?.review === ReviewStatus.PRIVATE}
 								<form onsubmit={() => setFeatured(ReviewStatus.APPROVED)}>
 									<button type="submit" class="flex items-center text-green-600 underline">
-										<CarbonStar class="mr-1.5 inline text-xs" />Force feature</button
+										<CarbonStar class="mr-1.5 inline text-xs" />Jõustage avalikkust</button
 									>
 								</form>
 							{/if}
 							{#if data.tool?.review === ReviewStatus.PENDING}
 								<form onsubmit={() => setFeatured(ReviewStatus.APPROVED)}>
 									<button type="submit" class="flex items-center text-green-600 underline">
-										<CarbonStar class="mr-1.5 inline text-xs" />Approve</button
+										<CarbonStar class="mr-1.5 inline text-xs" />Lubage</button
 									>
 								</form>
 								<form onsubmit={() => setFeatured(ReviewStatus.DENIED)}>
 									<button type="submit" class="flex items-center text-red-600">
 										<span class="mr-1.5 font-light no-underline">X</span>
-										<span class="underline">Deny</span>
+										<span class="underline">Keela</span>
 									</button>
 								</form>
 							{/if}
 							{#if data.tool?.review === ReviewStatus.APPROVED || data.tool?.review === ReviewStatus.DENIED}
 								<form onsubmit={() => setFeatured(ReviewStatus.PRIVATE)}>
 									<button type="submit" class="flex items-center text-red-600 underline">
-										<CarbonLock class="mr-1.5 inline text-xs " />Reset review</button
+										<CarbonLock class="mr-1.5 inline text-xs" />Lähtesta uuring</button
 									>
 								</form>
 							{/if}
@@ -286,7 +286,7 @@
 								}}
 							>
 								<button type="submit" class="flex items-center underline">
-									<CarbonStar class="mr-1.5 inline text-xs" />Request to be featured</button
+									<CarbonStar class="mr-1.5 inline text-xs" />Päringu avalikkust</button
 								>
 							</form>
 						{/if}
@@ -295,25 +295,25 @@
 			</div>
 			{#if !currentModelSupportTools}
 				<span class="relative text-sm text-gray-500">
-					You are currently not using a model that supports tools. Activate one
-					<a href="{base}/models" class="underline">here</a>.
+					Teie praegusel ajal ei kasuta mudelit, mis toetab tööriistu. Aktiivne
+					<a href="{base}/models" class="underline">siia</a>.
 				</span>
 			{:else}
 				<p class="text-sm max-sm:hidden">
-					Tools are applications that the model can choose to call while you are chatting with it.
+					Tööriistad on tööriistad, mida mudel saab valida, kui kasutaja külastab teie tööriistu.
 				</p>
 			{/if}
 			{#if data.tool.description}
 				<div>
-					<h2 class="text-lg font-semibold">Description</h2>
+					<h2 class="text-lg font-semibold">Kirjeldus</h2>
 					<p class="pb-2">{data.tool.description}</p>
 				</div>
 			{/if}
 
 			<div>
-				<h2 class="text-lg font-semibold">Direct URL</h2>
+				<h2 class="text-lg font-semibold">Otselink</h2>
 
-				<p class="pb-2 text-sm text-gray-500">Share this link with people to use your tool.</p>
+				<p class="pb-2 text-sm text-gray-500">Jagage seda linki inimestele, et kasutada teie tööriistu.</p>
 				<div
 					class="flex flex-row items-center gap-2 rounded-lg border-2 border-gray-200 bg-gray-100 py-2 pl-3 pr-1.5"
 				>
@@ -325,7 +325,7 @@
 								classNames="!border-none !shadow-none !py-0 !px-1 !rounded-md"
 							>
 								<div class="flex items-center gap-1.5 text-gray-500 hover:underline">
-									<CarbonLink />Copy
+									<CarbonLink />Kopeeri
 								</div>
 							</CopyToClipBoardBtn>
 						</div>

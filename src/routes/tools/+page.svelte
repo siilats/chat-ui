@@ -116,7 +116,7 @@
 <div class="scrollbar-custom h-full overflow-y-auto py-12 max-sm:pt-8 md:py-24">
 	<div class="pt-42 mx-auto flex flex-col px-5 xl:w-[60rem] 2xl:w-[64rem]">
 		<div class="flex items-center">
-			<h1 class="text-2xl font-bold">Tools</h1>
+			<h1 class="text-2xl font-bold">Tööriistad</h1>
 			{#if publicConfig.isHuggingChat}
 				<div class="5 ml-1.5 rounded-lg text-xxs uppercase text-gray-500 dark:text-gray-500">
 					beta
@@ -131,23 +131,23 @@
 				</a>
 			{/if}
 		</div>
-		<h2 class="text-gray-500">Popular tools made by the community</h2>
+		<h2 class="text-gray-500">Populäärseid tööriistu, mida kasutajad tööriistade tööriistadega töötavad.</h2>
 		<h3 class="mt-2 w-fit text-purple-700 dark:text-purple-300">
 			This feature is <span
 				class="rounded-lg bg-purple-100 px-2 py-1 font-semibold dark:bg-purple-800/50"
-				>experimental</span
-			>. Consider
+				>eksperimentaalne</span
+			>. Vaadake
 			<a
 				class="underline hover:text-purple-500"
 				href="https://huggingface.co/spaces/huggingchat/chat-ui/discussions/569"
-				target="_blank">sharing your feedback with us!</a
+				target="_blank">tagasi meiele!</a
 			>
 		</h3>
 		<div class="ml-auto mt-6 flex justify-between gap-2 max-sm:flex-col sm:items-center">
 			{#if data.isAdmin}
 				<label class="mr-auto flex items-center gap-1 text-red-500" title="Admin only feature">
 					<input type="checkbox" checked={showUnfeatured} onchange={toggleShowUnfeatured} />
-					Show unfeatured tools
+					Vaata avalikke tööriistu
 				</label>
 			{/if}
 			{#if page.data.loginRequired && !data.user}
@@ -157,14 +157,14 @@
 					}}
 					class="flex items-center gap-1 whitespace-nowrap rounded-lg border bg-white py-1 pl-1.5 pr-2.5 shadow-sm hover:bg-gray-50 hover:shadow-none dark:border-gray-600 dark:bg-gray-700 dark:hover:bg-gray-700"
 				>
-					<CarbonAdd />Create new tool
+					<CarbonAdd />Loo uus tööriist
 				</button>
 			{:else}
 				<a
 					href={`${base}/tools/new`}
 					class="flex items-center gap-1 whitespace-nowrap rounded-lg border bg-white py-1 pl-1.5 pr-2.5 shadow-sm hover:bg-gray-50 hover:shadow-none dark:border-gray-600 dark:bg-gray-700 dark:hover:bg-gray-700"
 				>
-					<CarbonAdd />Create new tool
+					<CarbonAdd />Loo uus tööriist
 				</a>
 			{/if}
 		</div>
@@ -174,7 +174,7 @@
 				<div
 					class="flex items-center gap-1.5 rounded-full border border-gray-300 bg-gray-50 px-3 py-1 dark:border-gray-600 dark:bg-gray-700 dark:text-white"
 				>
-					{toolsCreator}'s tools
+					{toolsCreator}'i tööriistad
 					<a
 						href={getHref(page.url, {
 							existingKeys: { behaviour: "delete", keys: ["user", "modelId", "p", "q"] },
@@ -191,8 +191,8 @@
 						href="https://hf.co/{toolsCreator}"
 						target="_blank"
 						class="ml-auto flex items-center text-xs text-gray-500 underline hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-300"
-						><CarbonArrowUpRight class="mr-1 flex-none text-[0.58rem]" target="_blank" />View {toolsCreator}
-						on HF</a
+						><CarbonArrowUpRight class="mr-1 flex-none text-[0.58rem]" target="_blank" />Vaata {toolsCreator}
+						HF-s</a
 					>
 				{/if}
 			{:else}
@@ -203,7 +203,7 @@
 						: 'border-transparent text-gray-400 hover:text-gray-800 dark:hover:text-gray-300'}"
 				>
 					<CarbonEarthAmerica class="text-xs" />
-					Active ({page.data.settings?.tools?.length})
+					Aktiivsed ({page.data.settings?.tools?.length})
 				</a>
 				<a
 					href={goToCommunity()}
@@ -213,7 +213,7 @@
 						: 'border-transparent text-gray-400 hover:text-gray-800 dark:hover:text-gray-300'}"
 				>
 					<CarbonEarthAmerica class="text-xs" />
-					Community
+					Kasutajate tööriistad
 				</a>
 				{#if data.user?.username}
 					<a
@@ -236,13 +236,13 @@
 				<CarbonSearch class="pointer-events-none absolute left-2 text-xs text-gray-400" />
 				<input
 					class="h-[30px] w-full bg-transparent pl-5 focus:outline-none"
-					placeholder="Filter by name"
+					placeholder="Filtreeri nime järgi"
 					value={filterValue}
 					oninput={(e) => filterOnName(e.currentTarget.value)}
 					bind:this={filterInputEl}
 					maxlength="150"
 					type="search"
-					aria-label="Filter tools by name"
+					aria-label="Filtreeri tööriistu nime järgi"
 				/>
 			</div>
 			<select
@@ -258,8 +258,8 @@
 
 		{#if !currentModelSupportTools}
 			<div class="mx-auto text-center text-sm text-purple-700 dark:text-purple-300">
-				You are currently not using a model that supports tools. Activate one
-				<a href="{base}/models" class="underline">here</a>.
+				Teie praegusel ajal ei kasuta mudelit, mis toetab tööriistu. Aktiivne
+				<a href="{base}/models" class="underline">siia</a>.
 			</div>
 		{/if}
 
@@ -289,12 +289,12 @@
 							{#if isActive}
 								<span
 									class="mx-1.5 inline-flex items-center rounded-full bg-blue-600 px-2 py-0.5 text-xs font-semibold text-white"
-									>Active</span
+									>Aktiivne</span
 								>
 							{/if}
 						</span>
 						<span class="line-clamp-1 font-mono text-xs text-gray-400">
-							{tool.baseUrl ?? "Internal tool"}
+							{tool.baseUrl ?? "Sisemine tööriist"}
 						</span>
 
 						<p class=" line-clamp-1 w-full text-sm text-gray-600 dark:text-gray-300">
@@ -322,16 +322,16 @@
 							</p>
 						{:else}
 							<p class="mt-auto text-xs text-purple-700 dark:text-purple-400">
-								HuggingChat official tool
+								HuggingChati tööriist
 							</p>
 						{/if}
 					</div>
 				</div>
 			{:else}
 				{#if activeOnly}
-					You don't have any active tools.
+					Teil pole aktiivseid tööriistu.
 				{:else}
-					No tools found
+					Ei leitud tööriistu
 				{/if}
 			{/each}
 		</div>
