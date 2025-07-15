@@ -102,7 +102,7 @@
 		<div class="w-full max-w-[400px] flex items-center justify-around">
 			<div class="flex flex-col items-center gap-1">
 				<div class="size-[77px] rounded-full bg-[#508DEF1A] flex items-center justify-center">
-					<img src="{publicConfig.assetPath}/icons/chatgpt.svg" alt="ChatGPT" class="w-full h-full object-cover size-[37.44px]">
+					<img src="{publicConfig.assetPath}/icons/chatgpt.svg" alt="ChatGPT" class="size-[37.44px]">
 				</div>
 				<div class="text-[18px] font-sans text-center font-[600] text-[#757575] dark:text-[#575757]">
 					ChatGPT
@@ -110,7 +110,7 @@
 			</div>
 			<div class="flex flex-col items-center gap-1">
 				<div class="size-[77px] rounded-full bg-[#508DEF1A] flex items-center justify-center">
-					<img src="{publicConfig.assetPath}/icons/deepseek.svg" alt="DeepSeek" class="w-full h-full object-cover size-[37.44px]">
+					<img src="{publicConfig.assetPath}/icons/deepseek.svg" alt="DeepSeek" class="size-[37.44px]">
 				</div>
 				<div class="text-[18px] font-sans text-center font-[600] text-[#757575] dark:text-[#575757]">
 					deepseek
@@ -118,7 +118,7 @@
 			</div>
 			<div class="flex flex-col items-center gap-1">
 				<div class="size-[77px] rounded-full bg-[#508DEF1A] flex items-center justify-center">
-					<img src="{publicConfig.assetPath}/icons/gemini.svg" alt="Gemini" class="w-full h-full object-cover size-[37.44px]">
+					<img src="{publicConfig.assetPath}/icons/gemini.svg" alt="Gemini" class="size-[37.44px]">
 				</div>
 				<div class="text-[18px] font-sans text-center font-[600] text-[#757575] dark:text-[#575757]">
 					Gemini
