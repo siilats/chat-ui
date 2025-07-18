@@ -84,5 +84,6 @@
 	{loading}
 	currentModel={findCurrentModel([...data.models, ...data.oldModels], modelId)}
 	models={data.models}
+	user={data.user ?? undefined}
 	bind:files
 />

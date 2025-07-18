@@ -102,5 +102,6 @@
 	assistant={data.assistant}
 	{currentModel}
 	models={data.models}
+	user={data.user ?? undefined}
 	bind:files
 />

@@ -92,5 +92,6 @@
 	currentModel={findCurrentModel([...data.models, ...data.oldModels], data.assistant.modelId)}
 	assistant={data.assistant}
 	models={data.models}
+	user={data.user ?? undefined}
 	bind:files
 />

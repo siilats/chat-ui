@@ -13,12 +13,13 @@
 
 	interface Props {
 		currentModel: Model;
+		user?: { email?: string; name?: string; username?: string } | undefined;
 	}
 
-	let { currentModel }: Props = $props();
+	let { currentModel, user }: Props = $props();
 
 	const dispatch = createEventDispatcher<{ message: string }>();
-	let email = $state("");
+	let email = $state(user?.email || "");
 	let phone = $state("");
 	let kordamine = $state("");
 	const options = ["1 kord", "2 korda", "3 korda", "4 korda", "5 korda"];
@@ -172,7 +173,7 @@
 						id="email-input"
 						bind:value={email}
 						placeholder="nina@email.com"
-						class="w-full rounded-md border border-gray-300 px-4 py-2 text-sm focus:ring-2 focus:ring-blue-400 focus:outline-none"
+						class="w-full rounded-md border border-gray-300 px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
 					/>
 				</div>
 
@@ -186,7 +187,7 @@
 						id="phone-input"
 						bind:value={phone}
 						placeholder="324 123 4567"
-						class="w-full rounded-md border border-gray-300 px-4 py-2 text-sm text-gray-400 focus:ring-2 focus:ring-blue-400 focus:outline-none"
+						class="w-full rounded-md border border-gray-300 px-4 py-2 text-sm text-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-400"
 					/>
 				</div>
 			</div>
@@ -204,7 +205,7 @@
 					<div class="relative">
 						<select
 							bind:value={kordamine}
-							class="w-full appearance-none rounded-md border border-gray-300 px-4 py-2 text-sm font-medium focus:ring-2 focus:ring-blue-400 focus:outline-none"
+							class="w-full appearance-none rounded-md border border-gray-300 px-4 py-2 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-blue-400"
 							id="kordamine-input"
 						>
 							<option disabled selected value="">Select</option>
@@ -229,7 +230,6 @@
 				<!-- Submit Button -->
 				<button
 					class="flex w-full items-center justify-center gap-2 rounded-md bg-[#306FC7] py-3 font-semibold text-white hover:bg-blue-700"
-
 				>
 					Esita
 					<svg

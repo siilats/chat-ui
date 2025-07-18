@@ -51,6 +51,7 @@
 		assistant?: Assistant | undefined;
 		preprompt?: string | undefined;
 		files?: File[];
+		user?: { email?: string; name?: string; username?: string } | undefined;
 	}
 
 	let {
@@ -64,6 +65,7 @@
 		assistant = undefined,
 		preprompt = undefined,
 		files = $bindable([]),
+		user = undefined,
 	}: Props = $props();
 
 	let isReadOnly = $derived(!models.some((model) => model.id === currentModel.id));
@@ -168,7 +170,9 @@
 	);
 
 	function onShare() {
-		if (!confirm("Kas olete kindel, et soovite seda konversatsiooni jagada? See ei saa tulla tagasi.")) {
+		if (
+			!confirm("Kas olete kindel, et soovite seda konversatsiooni jagada? See ei saa tulla tagasi.")
+		) {
 			return;
 		}
 
@@ -317,6 +321,7 @@
 			{:else if !assistant}
 				<ChatIntroduction
 					{currentModel}
+					{user}
 					on:message={(ev) => {
 						if (page.data.loginRequired) {
 							ev.preventDefault();
@@ -427,7 +432,10 @@
 						class:paste-glow={pastedLongContent}
 					>
 						{#if lastIsError}
-							<ChatInput value="Vabandust, midagi läks valesti. Palun proovige uuesti." disabled={true} />
+							<ChatInput
+								value="Vabandust, midagi läks valesti. Palun proovige uuesti."
+								disabled={true}
+							/>
 						{:else}
 							<ChatInput
 								{assistant}
@@ -513,7 +521,8 @@
 							</span>
 						{/if}
 					{/if}
-					<span class="max-sm:hidden">·</span><br class="sm:hidden" /> Loodud sisu võib olla ebatäpne või vale.
+					<span class="max-sm:hidden">·</span><br class="sm:hidden" /> Loodud sisu võib olla ebatäpne
+					või vale.
 				</p>
 				{#if messages.length}
 					<button

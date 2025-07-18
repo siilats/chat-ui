@@ -356,10 +356,7 @@
 							messageToWriteTo.content = messageToWriteTo.content?.slice(0, -update.content);
 						}
 						if (update.reasoning) {
-							messageToWriteTo.reasoning = messageToWriteTo.reasoning?.slice(
-								0,
-								-update.reasoning
-							);
+							messageToWriteTo.reasoning = messageToWriteTo.reasoning?.slice(0, -update.reasoning);
 						}
 					}
 				}
@@ -521,6 +518,7 @@
 	{messagesAlternatives}
 	shared={data.shared}
 	preprompt={data.preprompt}
+	user={data.user ?? undefined}
 	bind:files
 	on:message={onMessage}
 	on:retry={onRetry}
