@@ -22,7 +22,54 @@
 	let email = $state(user?.email || "");
 	let phone = $state("");
 	let kordamine = $state("");
+	let isSubmitting = $state(false);
+	let submitMessage = $state("");
+	let submitError = $state("");
 	const options = ["1 kord", "2 korda", "3 korda", "4 korda", "5 korda"];
+
+	async function handleSubmit() {
+		// Reset messages
+		submitMessage = "";
+		submitError = "";
+
+		// Validate form
+		if (!email || !phone || !kordamine) {
+			submitError = "Palun täida kõik väljad";
+			return;
+		}
+
+		isSubmitting = true;
+
+		try {
+			const response = await fetch("/api/waitlist", {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify({
+					email,
+					phone,
+					repetition: kordamine,
+				}),
+			});
+
+			const data = await response.json();
+
+			if (response.ok) {
+				submitMessage = "Täname! Oled edukalt ootejärjekorda lisatud.";
+				// Reset form
+				email = "";
+				phone = "";
+				kordamine = "";
+			} else {
+				submitError = data.error || "Viga andmete salvestamisel";
+			}
+		} catch (error) {
+			submitError = "Viga andmete saatmisel. Palun proovi uuesti.";
+		} finally {
+			isSubmitting = false;
+		}
+	}
 </script>
 
 <div class="my-auto flex flex-col">
@@ -229,9 +276,12 @@
 
 				<!-- Submit Button -->
 				<button
-					class="flex w-full items-center justify-center gap-2 rounded-md bg-[#306FC7] py-3 font-semibold text-white hover:bg-blue-700"
+					type="button"
+					onclick={handleSubmit}
+					disabled={isSubmitting}
+					class="flex w-full items-center justify-center gap-2 rounded-md bg-[#306FC7] py-3 font-semibold text-white hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-50"
 				>
-					Esita
+					{isSubmitting ? "Saadan..." : "Esita"}
 					<svg
 						class="h-5 w-5"
 						fill="none"
@@ -242,6 +292,19 @@
 						<path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
 					</svg>
 				</button>
+
+				<!-- Success/Error Messages -->
+				{#if submitMessage}
+					<div class="mt-3 rounded-md border border-green-400 bg-green-100 p-3 text-green-700">
+						{submitMessage}
+					</div>
+				{/if}
+
+				{#if submitError}
+					<div class="mt-3 rounded-md border border-red-400 bg-red-100 p-3 text-red-700">
+						{submitError}
+					</div>
+				{/if}
 			</div>
 		</div>
 	</div>

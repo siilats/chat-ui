@@ -13,6 +13,7 @@ import type { MigrationResult } from "$lib/types/MigrationResult";
 import type { Semaphore } from "$lib/types/Semaphore";
 import type { AssistantStats } from "$lib/types/AssistantStats";
 import type { CommunityToolDB } from "$lib/types/Tool";
+import type { Waitlist } from "$lib/types/Waitlist";
 import { MongoMemoryServer } from "mongodb-memory-server";
 import { logger } from "$lib/server/logger";
 import { building } from "$app/environment";
@@ -132,6 +133,7 @@ export class Database {
 		const tokenCaches = db.collection<TokenCache>("tokens");
 		const tools = db.collection<CommunityToolDB>("tools");
 		const configCollection = db.collection<ConfigKey>("config");
+		const waitlist = db.collection<Waitlist>("waitlist");
 
 		return {
 			conversations,
@@ -151,6 +153,7 @@ export class Database {
 			tokenCaches,
 			tools,
 			config: configCollection,
+			waitlist,
 		};
 	}
 
@@ -175,6 +178,7 @@ export class Database {
 			tokenCaches,
 			tools,
 			config,
+			waitlist,
 		} = this.getCollections();
 
 		conversations
@@ -290,6 +294,8 @@ export class Database {
 			.catch((e) => logger.error(e));
 
 		config.createIndex({ key: 1 }, { unique: true }).catch((e) => logger.error(e));
+		waitlist.createIndex({ email: 1 }, { unique: true }).catch((e) => logger.error(e));
+		waitlist.createIndex({ createdAt: 1 }).catch((e) => logger.error(e));
 	}
 }
 
