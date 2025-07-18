@@ -229,6 +229,7 @@
 				<!-- Submit Button -->
 				<button
 					class="flex w-full items-center justify-center gap-2 rounded-md bg-[#306FC7] py-3 font-semibold text-white hover:bg-blue-700"
+
 				>
 					Esita
 					<svg
@@ -245,5 +246,5 @@
 		</div>
 	</div>
 
-	<div class="h-40 sm:h-24"></div>
+	<div class="h-40"></div>
 </div>
