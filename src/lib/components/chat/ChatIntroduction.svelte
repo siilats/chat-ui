@@ -200,59 +200,70 @@
 		</div>
 	</div>
 
-	<div class="mt-8 flex flex-col rounded-xl bg-white p-4 shadow-md">
+	<div class="mt-8 flex flex-col rounded-xl bg-white p-4 shadow-md dark:bg-gray-800 dark:shadow-lg">
 		<div class="flex flex-col items-center rounded-2xl">
-			<h1 class="text-center text-2xl font-bold text-blue-600">
+			<h1 class="text-center text-2xl font-bold text-blue-600 dark:text-blue-400">
 				Jagatud ChatGPT <br /> PRO Konto
 			</h1>
-			<p class="w-md text-center font-medium text-gray-600">Sisesta oma andmed ja saa kutse</p>
+			<p class="w-md text-center font-medium text-gray-600 dark:text-gray-300">
+				Sisesta oma andmed ja saa kutse
+			</p>
 		</div>
 
 		<div class="mt-3 flex flex-col items-center">
 			<div class="mx-auto w-full max-w-md space-y-5">
 				<!-- Email -->
 				<div>
-					<label class="mb-1 block text-sm font-semibold text-gray-700" for="email-input">
-						Meil<span class="text-red-500">*</span>
+					<label
+						class="mb-1 block text-sm font-semibold text-gray-700 dark:text-gray-200"
+						for="email-input"
+					>
+						Meil<span class="text-red-500 dark:text-red-400">*</span>
 					</label>
 					<input
 						type="email"
 						id="email-input"
 						bind:value={email}
 						placeholder="nina@email.com"
-						class="w-full rounded-md border border-gray-300 px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
+						class="w-full rounded-md border border-gray-300 bg-white px-4 py-2 text-sm text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-400 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100 dark:placeholder-gray-400 dark:focus:ring-blue-500"
 					/>
 				</div>
 
 				<!-- Phone -->
 				<div>
-					<label class="mb-1 block text-sm font-semibold text-gray-700" for="phone-input">
-						Telefoninumber<span class="text-red-500">*</span>
+					<label
+						class="mb-1 block text-sm font-semibold text-gray-700 dark:text-gray-200"
+						for="phone-input"
+					>
+						Telefoninumber<span class="text-red-500 dark:text-red-400">*</span>
 					</label>
 					<input
 						type="tel"
 						id="phone-input"
 						bind:value={phone}
 						placeholder="324 123 4567"
-						class="w-full rounded-md border border-gray-300 px-4 py-2 text-sm text-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-400"
+						class="w-full rounded-md border border-gray-300 bg-white px-4 py-2 text-sm text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-400 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100 dark:placeholder-gray-400 dark:focus:ring-blue-500"
 					/>
 				</div>
 			</div>
 
-			<p class="mt-4 text-sm font-medium text-gray-600">
+			<p class="mt-4 text-sm font-medium text-gray-600 dark:text-gray-300">
 				Annan nöusoleku, et minu e-posti aadressi ja telefoninumbrit kasutatkase, et saata mulle
 				meeldetuletusi hääletamise kohta. Millise sagedusega soovid meeldetuletusi saada?
 			</p>
 			<div class="mx-auto mt-5 w-full max-w-md space-y-6">
 				<!-- Dropdown Field -->
 				<div>
-					<label class="mb-1 block text-sm font-semibold text-gray-700" for="kordamine-input">
-						kordamine<span class="text-red-500">*</span>
+					<label
+						class="mb-1 block text-sm font-semibold text-gray-700 dark:text-gray-200"
+						for="kordamine-input"
+					>
+						kordamine<span class="text-red-500 dark:text-red-400">*</span>
 					</label>
 					<div class="relative">
 						<select
 							bind:value={kordamine}
-							class="w-full appearance-none rounded-md border border-gray-300 px-4 py-2 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-blue-400"
+							class="w-full appearance-none rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-400 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100 dark:focus:ring-blue-500"
 							id="kordamine-input"
 						>
 							<option disabled selected value="">Select</option>
@@ -262,7 +273,7 @@
 						</select>
 						<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
 							<svg
-								class="h-4 w-4 text-gray-500"
+								class="h-4 w-4 text-gray-500 dark:text-gray-400"
 								fill="none"
 								stroke="currentColor"
 								stroke-width="2"
@@ -279,7 +290,7 @@
 					type="button"
 					onclick={handleSubmit}
 					disabled={isSubmitting}
-					class="flex w-full items-center justify-center gap-2 rounded-md bg-[#306FC7] py-3 font-semibold text-white hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-50"
+					class="flex w-full items-center justify-center gap-2 rounded-md bg-[#306FC7] py-3 font-semibold text-white hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-50 dark:bg-blue-600 dark:hover:bg-blue-700 dark:disabled:opacity-50"
 				>
 					{isSubmitting ? "Saadan..." : "Esita"}
 					<svg
@@ -295,13 +306,17 @@
 
 				<!-- Success/Error Messages -->
 				{#if submitMessage}
-					<div class="mt-3 rounded-md border border-green-400 bg-green-100 p-3 text-green-700">
+					<div
+						class="mt-3 rounded-md border border-green-400 bg-green-100 p-3 text-green-700 dark:border-green-500 dark:bg-green-900/50 dark:text-green-300"
+					>
 						{submitMessage}
 					</div>
 				{/if}
 
 				{#if submitError}
-					<div class="mt-3 rounded-md border border-red-400 bg-red-100 p-3 text-red-700">
+					<div
+						class="mt-3 rounded-md border border-red-400 bg-red-100 p-3 text-red-700 dark:border-red-500 dark:bg-red-900/50 dark:text-red-300"
+					>
 						{submitError}
 					</div>
 				{/if}
